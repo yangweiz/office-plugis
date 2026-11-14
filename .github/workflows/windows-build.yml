@@ -20,10 +20,51 @@ jobs:
       - name: Run static checks
         run: python3 scripts/verify-static.py
 
-  build:
-    name: Build, test and package (${{ matrix.platform }})
+  core:
+    name: Core build and tests
     runs-on: windows-2022
     needs: static
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Add MSBuild to PATH
+        uses: microsoft/setup-msbuild@v2
+
+      - name: Build managed projects
+        shell: powershell
+        run: |
+          $projects = @(
+            "src\Suite.Core\Suite.Core.csproj",
+            "src\Suite.Infrastructure\Suite.Infrastructure.csproj",
+            "src\Suite.Windowing\Suite.Windowing.csproj",
+            "tests\Suite.Core.Tests\Suite.Core.Tests.csproj"
+          )
+          foreach ($project in $projects) {
+            Write-Host "Building $project"
+            msbuild $project /t:Build /p:Configuration=Release /p:Platform=AnyCPU /nologo /verbosity:minimal
+            if ($LASTEXITCODE -ne 0) {
+              throw "MSBuild failed for $project with exit code $LASTEXITCODE."
+            }
+          }
+
+      - name: Run core tests
+        shell: powershell
+        run: |
+          $testExe = "tests\Suite.Core.Tests\bin\Release\Suite.Core.Tests.exe"
+          if (-not (Test-Path $testExe -PathType Leaf)) {
+            throw "The core test executable was not built: $testExe"
+          }
+          & $testExe
+          if ($LASTEXITCODE -ne 0) {
+            throw "Core tests failed with exit code $LASTEXITCODE."
+          }
+
+  package:
+    name: Build and package MSI (${{ matrix.platform }})
+    runs-on: [ self-hosted, windows ]
+    needs: static
+    if: github.event_name == 'workflow_dispatch'
     strategy:
       fail-fast: false
       matrix:
@@ -32,96 +73,32 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Add MSBuild to PATH
-        uses: microsoft/setup-msbuild@v2
-
-      - name: Locate Visual Studio 2022
-        id: vs
+      - name: Verify VSTO build support
         shell: powershell
         run: |
           $vswhere = "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\vswhere.exe"
           if (-not (Test-Path $vswhere -PathType Leaf)) {
-            throw "vswhere.exe was not found on this runner."
+            throw "vswhere.exe was not found. Install Visual Studio 2022 with the Office/SharePoint development workload on this runner."
           }
           $installPath = & $vswhere -version "[17.0,18.0)" -latest -products * -property installationPath | Select-Object -First 1
           if ([string]::IsNullOrWhiteSpace([string]$installPath)) {
             throw "Visual Studio 2022 was not found."
           }
-          "installPath=$installPath" >> $env:GITHUB_OUTPUT
-
-      - name: Ensure VSTO build support
-        shell: powershell
-        run: |
-          function Find-VstoTargets {
-            param([Parameter(Mandatory = $true)][string]$InstallPath)
-
-            $direct = Join-Path $InstallPath "MSBuild\Microsoft\VisualStudio\v17.0\OfficeTools\Microsoft.VisualStudio.OfficeTools.targets"
-            if (Test-Path $direct -PathType Leaf) {
-              return $direct
-            }
-
-            $root = Join-Path $InstallPath "MSBuild\Microsoft\VisualStudio"
-            if (-not (Test-Path $root -PathType Container)) {
-              return $null
-            }
-            $candidate = Get-ChildItem -Path $root -Directory -ErrorAction SilentlyContinue |
+          $root = Join-Path $installPath "MSBuild\Microsoft\VisualStudio"
+          $targets = $null
+          if (Test-Path $root -PathType Container) {
+            $targets = Get-ChildItem -Path $root -Directory -ErrorAction SilentlyContinue |
               Sort-Object -Property Name -Descending |
               ForEach-Object {
                 $path = Join-Path $_.FullName "OfficeTools\Microsoft.VisualStudio.OfficeTools.targets"
                 if (Test-Path $path -PathType Leaf) { $path }
               } |
               Select-Object -First 1
-            return $candidate
-          }
-
-          $installPath = "${{ steps.vs.outputs.installPath }}"
-          $targets = Find-VstoTargets -InstallPath $installPath
-          if (-not $targets) {
-            Write-Host "OfficeTools targets are missing; adding the Office/SharePoint development workload."
-            $installer = "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\vs_installer.exe"
-            if (-not (Test-Path $installer -PathType Leaf)) {
-              throw "vs_installer.exe was not found."
-            }
-            $arguments = @(
-              "modify",
-              "--installPath", ('"' + $installPath + '"'),
-              "--add", "Microsoft.VisualStudio.Workload.Office",
-              "--includeRecommended",
-              "--quiet", "--norestart", "--nocache"
-            )
-            $process = Start-Process -FilePath $installer -ArgumentList $arguments -Wait -PassThru
-            Write-Host "vs_installer.exe exit code: $($process.ExitCode)"
-            if ($process.ExitCode -ne 0 -and $process.ExitCode -ne 3010) {
-              throw "vs_installer.exe failed with exit code $($process.ExitCode)."
-            }
-            Get-Process -Name "setup", "vs_setup" -ErrorAction SilentlyContinue | Wait-Process
-            $targets = Find-VstoTargets -InstallPath $installPath
           }
           if (-not $targets) {
-            Write-Host "Recent Visual Studio Installer logs under $env:TEMP:"
-            Get-ChildItem -Path $env:TEMP -Filter "dd_*" -File -ErrorAction SilentlyContinue |
-              Sort-Object -Property LastWriteTime -Descending |
-              Select-Object -First 10 |
-              ForEach-Object { Write-Host $_.FullName }
-            throw "VSTO build targets are still unavailable. Use a self-hosted Windows runner with the Office/SharePoint development workload installed."
+            throw "VSTO build targets are missing. Install the Office/SharePoint development workload on this self-hosted runner."
           }
           Write-Host "VSTO targets found: $targets"
-
-      - name: Install WiX Toolset 3.x
-        shell: powershell
-        run: |
-          choco install wixtoolset -y --no-progress
-          $root = Get-ChildItem -Path ${env:ProgramFiles(x86)} -Directory -Filter "WiX Toolset v3.*" -ErrorAction SilentlyContinue |
-            Sort-Object -Property Name -Descending |
-            Select-Object -First 1
-          if (-not $root) {
-            throw "WiX Toolset 3.x was not found under Program Files (x86)."
-          }
-          $candle = Join-Path $root.FullName "bin\candle.exe"
-          if (-not (Test-Path $candle -PathType Leaf)) {
-            throw "candle.exe was not found in $($root.FullName)\bin."
-          }
-          "WIX=$($root.FullName)" >> $env:GITHUB_ENV
 
       - name: Build, test and package
         shell: powershell
