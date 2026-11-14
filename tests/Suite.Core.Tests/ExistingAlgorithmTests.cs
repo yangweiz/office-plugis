@@ -292,7 +292,7 @@ namespace Suite.Core.Tests
             DelegateSuiteCommand command = Command("Text.Clean", "清理文本", "文本 清理", SuiteHost.Word, true, null);
             registry.Register(command);
             TestAssert.True(object.ReferenceEquals(command, registry.Find("text.clean")));
-            TestAssert.Equal<string>(null, registry.Find(null));
+            TestAssert.Equal<ISuiteCommand>(null, registry.Find(null));
             TestAssert.Equal(1, registry.Search(SuiteHost.Word, "文本").Count);
             TestAssert.Equal(0, registry.Search(SuiteHost.Excel, string.Empty).Count);
             TestAssert.Throws<InvalidOperationException>(() => registry.Register(Command("text.clean", "重复", string.Empty, SuiteHost.Word, true, null)));
@@ -322,7 +322,7 @@ namespace Suite.Core.Tests
                 source.Cancel();
                 bool executed = false;
                 DelegateSuiteCommand command = Command("cancel", "取消", string.Empty, SuiteHost.Word, true,
-                    delegate(CommandContext context, CancellationToken token) { executed = true; return CommandResult.Success("不应执行"); });
+                    delegate(CommandContext commandContext, CancellationToken token) { executed = true; return CommandResult.Success("不应执行"); });
                 var context = new CommandContext(SuiteHost.Word, null, null, null, null);
                 TestAssert.Equal(CommandStatus.Cancelled, new CommandExecutor().Execute(command, context, source.Token).Status);
                 TestAssert.False(executed);
