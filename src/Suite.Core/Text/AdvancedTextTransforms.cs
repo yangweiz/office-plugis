@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 using System.Text.RegularExpressions;
 
@@ -27,7 +28,7 @@ namespace Suite.Core.Text
         {
             Output = output;
             TotalMatches = totalMatches;
-            Previews = previews.AsReadOnly();
+            Previews = new ReadOnlyCollection<RegexMatchPreview>(previews);
         }
 
         public string Output { get; private set; }
