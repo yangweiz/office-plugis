@@ -1,0 +1,136 @@
+FeatureID,CanonicalName,Host,SourceProducts,SourceURLs,Retrieved,Status,Dependency,Phase,VerificationCase,Notes
+COM-001,功能搜索与命令入口,Word/Excel/PowerPoint,不坑盒子|方方格子,https://www.bukenghezi.com/入门/4.功能列表.html|http://www.ffcell.com/home/ffcell.aspx,2026-11-12,确认,无,P0,COM-001,按名称检索并执行宿主可用命令
+COM-002,主题与参数设置,Word/Excel/PowerPoint,不坑盒子|方方格子|小恐龙|公文处理助手,https://www.bukenghezi.com/入门/4.功能列表.html|http://www.ffcell.com/home/ffcell.aspx|https://gw.xkonglong.com/feature.html|http://www.gwclzs.cn/gwclzs_kssz.html,2026-11-12,确认,无,P0,COM-002,设置持久化且损坏时安全回退
+COM-003,模板库,Word/Excel/PowerPoint,不坑盒子|快点公文助手,https://www.bukenghezi.com/入门/4.功能列表.html|http://www.kdgw.vip/wz?article_id=13,2026-11-12,确认,原创模板,P1,COM-003,导入导出并校验模板不覆盖原文件
+COM-004,宏与代码收纳箱,Word/Excel/PowerPoint,不坑盒子|方方格子,https://www.bukenghezi.com/入门/4.功能列表.html|http://www.ffcell.com/home/ffcell.aspx,2026-11-12,确认,用户自行审阅代码,P3,COM-004,默认不自动执行外部代码
+COM-005,灵感收集,Word/Excel/PowerPoint,不坑盒子,https://www.bukenghezi.com/入门/4.功能列表.html,2026-11-12,确认,本地存储,P3,COM-005,新增检索删除与持久化
+COM-006,用户帮助与版本信息,Word/Excel/PowerPoint,不坑盒子|方方格子|小恐龙,https://www.bukenghezi.com/入门/4.功能列表.html|http://www.ffcell.com/home/ffcell.aspx|https://gw.xkonglong.com/feature.html,2026-11-12,确认,无,P0,COM-006,显示原创产品信息和离线帮助
+DOC-001,文档切换侧栏,Word/Excel/PowerPoint,Office Tab,https://www.extendoffice.com/products/office-tab.html,2026-11-12,确认,Office任务窗格,P0,DOC-001,新建打开激活后列表同步
+DOC-002,全部保存与全部关闭,Word/Excel/PowerPoint,Office Tab,https://www.extendoffice.com/products/office-tab.html,2026-11-12,确认,无,P0,DOC-002,未保存文档逐个确认且不静默丢弃
+DOC-003,文档颜色标记,Word/Excel/PowerPoint,Office Tab,https://www.extendoffice.com/products/office-tab.html,2026-11-12,确认,本地设置,P0,DOC-003,颜色随文档路径恢复
+DOC-004,文档切换快捷键,Word/Excel/PowerPoint,Office Tab,https://www.extendoffice.com/products/office-tab.html,2026-11-12,确认,Windows键盘钩子,P1,DOC-004,可配置且不覆盖Office已有组合键
+DOC-005,单窗口原生标签,Word/Excel/PowerPoint,Office Tab,https://www.extendoffice.com/products/office-tab.html,2026-11-12,确认,Win32/COM窗口集成,P2,DOC-005,多文档切换与Office版本DPI兼容测试
+DOC-006,标签拖拽排序与分组,Word/Excel/PowerPoint,Office Tab,https://www.extendoffice.com/products/office-tab.html,2026-11-12,确认,DOC-005,P2,DOC-006,拖放分组打开保存关闭
+DOC-007,标签重命名,Word/Excel/PowerPoint,Office Tab,https://www.extendoffice.com/products/office-tab.html,2026-11-12,确认,DOC-005,P2,DOC-007,冲突校验且不丢失内容
+DOC-008,标签位置样式长度与双行文件名,Word/Excel/PowerPoint,Office Tab,https://www.extendoffice.com/products/office-tab.html,2026-11-12,确认,DOC-005,P2,DOC-008,上下左右位置及字体颜色长度持久化
+DOC-009,多窗口拖出与合并,Word/Excel/PowerPoint,Office Tab,https://www.extendoffice.com/products/office-tab.html,2026-11-12,确认,DOC-005,P2,DOC-009,多显示器和不同DPI下拖出合并
+DOC-010,标签右键菜单与Ribbon尺寸同步,Word/Excel/PowerPoint,Office Tab,https://www.extendoffice.com/products/office-tab.html,2026-11-12,确认,DOC-005,P2,DOC-010,菜单动作及Ribbon状态一致
+W-PAGE-001,公文页面与自定义页面模板,Word,不坑盒子|小恐龙|快点|公文处理助手|尚书,https://www.bukenghezi.com/入门/4.功能列表.html|https://gw.xkonglong.com/feature.html|http://www.kdgw.vip/wz?article_id=13|http://www.gwclzs.cn/gwclzs_kssz.html|http://www.gongwenzhushou.cn/bangzhu.asp,2026-11-12,确认,GB/T 9704样本文档,P0,W-PAGE-001,A4边距版心和模板复用验证
+W-PAGE-002,22行28字版面,Word,不坑盒子,https://www.bukenghezi.com/入门/4.功能列表.html,2026-11-12,确认,Word文档网格,P0,W-PAGE-002,文档网格和样张核验
+W-PAGE-003,信函首页独立页面格式,Word,快点公文助手,http://www.kdgw.vip/wz?article_id=13,2026-11-12,确认,分节与首页不同,P1,W-PAGE-003,首页无页码第二页起连续
+W-PAGE-004,插入横页与当前页转横页,Word,不坑盒子|小恐龙|快点|尚书,https://www.bukenghezi.com/入门/4.功能列表.html|https://gw.xkonglong.com/feature.html|http://www.kdgw.vip/wz?article_id=13|http://www.gongwenzhushou.cn/bangzhu.asp,2026-11-12,确认,Word分节,P0,W-PAGE-004,横向节前后内容不移动且页码正确
+W-PAGE-005,A3版面转A4,Word,不坑盒子,https://www.bukenghezi.com/入门/4.功能列表.html,2026-11-12,确认,版式规则,P1,W-PAGE-005,转换后分页抽样核验
+W-PAGE-006,当前页重设为第1页,Word,不坑盒子,https://www.bukenghezi.com/入门/4.功能列表.html,2026-11-12,确认,分节页码,P1,W-PAGE-006,当前节起始页码为1且其他节不受影响
+W-PAGE-007,页码插入与奇偶内外侧位置,Word,不坑盒子|小恐龙|快点|尚书,https://www.bukenghezi.com/入门/4.功能列表.html|https://gw.xkonglong.com/feature.html|http://www.kdgw.vip/wz?article_id=13|http://www.gongwenzhushou.cn/bangzhu.asp,2026-11-12,确认,Word域,P0,W-PAGE-007,居中居右外侧及横向短边页码
+W-PAGE-008,页眉页脚及页眉横线清理,Word,不坑盒子|小恐龙|快点|公文处理助手,https://www.bukenghezi.com/入门/4.功能列表.html|https://gw.xkonglong.com/feature.html|http://www.kdgw.vip/wz?article_id=13|http://www.gwclzs.cn/gwclzs_kssz.html,2026-11-12,确认,无,P0,W-PAGE-008,按范围清理且保留用户选择内容
+W-PAGE-009,分页分节符插入删除与互转,Word,不坑盒子|快点,https://www.bukenghezi.com/入门/4.功能列表.html|http://www.kdgw.vip/wz?article_id=13,2026-11-12,确认,无,P1,W-PAGE-009,操作前后节属性不意外改变
+W-STYLE-001,正文与一至四级标题样式,Word,不坑盒子|小恐龙|快点|公文处理助手|尚书,https://www.bukenghezi.com/入门/4.功能列表.html|https://gw.xkonglong.com/feature.html|http://www.kdgw.vip/wz?article_id=13|http://www.gwclzs.cn/gwclzs_kssz.html|http://www.gongwenzhushou.cn/bangzhu.asp,2026-11-12,确认,原创样式模板,P0,W-STYLE-001,选区样式和字体段落符合配置
+W-STYLE-002,自动与手动一键排版,Word,不坑盒子|小恐龙|快点,https://www.bukenghezi.com/入门/4.功能列表.html|https://gw.xkonglong.com/feature.html|http://www.kdgw.vip/wz?article_id=13,2026-11-12,确认,W-PAGE-001|W-STYLE-001,P0,W-STYLE-002,只处理可识别段落并输出跳过清单
+W-STYLE-003,标题修正提级降级与大纲级别,Word,不坑盒子|快点|公文处理助手,https://www.bukenghezi.com/入门/4.功能列表.html|http://www.kdgw.vip/wz?article_id=13|http://www.gwclzs.cn/gwclzs_kssz.html,2026-11-12,确认,标题识别规则,P0,W-STYLE-003,升降级不修改正文
+W-STYLE-004,自定义样式与样式修复,Word,小恐龙|快点|公文处理助手,https://gw.xkonglong.com/feature.html|http://www.kdgw.vip/wz?article_id=13|http://www.gwclzs.cn/gwclzs_kssz.html,2026-11-12,确认,模板库,P1,W-STYLE-004,导入样式修复且不覆盖用户同名样式除非确认
+W-STYLE-005,样式转直接格式,Word,公文处理助手,http://www.gwclzs.cn/gwclzs_kssz.html,2026-11-12,确认,无,P1,W-STYLE-005,分离后视觉格式一致
+W-STYLE-006,序号插入转换与自动编号转文本,Word,不坑盒子|快点|公文处理助手,https://www.bukenghezi.com/入门/4.功能列表.html|http://www.kdgw.vip/wz?article_id=13|http://www.gwclzs.cn/gwclzs_kssz.html,2026-11-12,确认,编号规则,P1,W-STYLE-006,起始序号样式和级别转换正确
+W-STYLE-007,字体列表与全文字体替换,Word,小恐龙|快点|公文处理助手|尚书,https://gw.xkonglong.com/feature.html|http://www.kdgw.vip/wz?article_id=13|http://www.gwclzs.cn/gwclzs_kssz.html|http://www.gongwenzhushou.cn/bangzhu.asp,2026-11-12,确认,已安装字体,P1,W-STYLE-007,中文与西文字体可分别替换
+W-STYLE-008,字号字宽字距与行距缩进调整,Word,快点|公文处理助手,http://www.kdgw.vip/wz?article_id=13|http://www.gwclzs.cn/gwclzs_kssz.html,2026-11-12,确认,无,P1,W-STYLE-008,步进值边界和选区恢复
+W-STYLE-009,孤行孤页与独字成行处理,Word,快点|尚书,http://www.kdgw.vip/wz?article_id=13|http://www.gongwenzhushou.cn/bangzhu.asp,2026-11-12,确认,Word分页,P1,W-STYLE-009,分页变化可撤销且不误改表格
+W-STYLE-010,加粗对齐与讲话稿序号强调,Word,快点|公文处理助手,http://www.kdgw.vip/wz?article_id=13|http://www.gwclzs.cn/gwclzs_kssz.html,2026-11-12,确认,无,P1,W-STYLE-010,只修改命中范围
+W-TEXT-001,断行重排与换行转段落,Word,不坑盒子|小恐龙|快点|公文处理助手,https://www.bukenghezi.com/入门/4.功能列表.html|https://gw.xkonglong.com/feature.html|http://www.kdgw.vip/wz?article_id=13|http://www.gwclzs.cn/gwclzs_kssz.html,2026-11-12,确认,纯文本规则,P0,W-TEXT-001,保留标题列表与真正段落边界
+W-TEXT-002,空白空格空段与不可见字符清理,Word,不坑盒子|小恐龙|快点|公文处理助手,https://www.bukenghezi.com/入门/4.功能列表.html|https://gw.xkonglong.com/feature.html|http://www.kdgw.vip/wz?article_id=13|http://www.gwclzs.cn/gwclzs_kssz.html,2026-11-12,确认,纯文本规则,P0,W-TEXT-002,可选段前文中空白且不误删有意义空格
+W-TEXT-003,超链接与混乱直接格式清理,Word,不坑盒子|快点|公文处理助手,https://www.bukenghezi.com/入门/4.功能列表.html|http://www.kdgw.vip/wz?article_id=13|http://www.gwclzs.cn/gwclzs_kssz.html,2026-11-12,确认,无,P0,W-TEXT-003,保留显示文字及指定样式
+W-TEXT-004,空白页与表后空白页清理,Word,不坑盒子,https://www.bukenghezi.com/入门/4.功能列表.html,2026-11-12,确认,Word分页,P1,W-TEXT-004,不删除承载分节属性的必要段落
+W-TEXT-005,中英文标点互转与全半角转换,Word,不坑盒子|小恐龙|快点,https://www.bukenghezi.com/入门/4.功能列表.html|https://gw.xkonglong.com/feature.html|http://www.kdgw.vip/wz?article_id=13,2026-11-12,确认,映射规则,P1,W-TEXT-005,URL英文与数字范围可排除
+W-TEXT-006,小写金额转人民币大写,Word|Excel,不坑盒子|快点,https://www.bukenghezi.com/入门/4.功能列表.html|http://www.kdgw.vip/wz?article_id=13,2026-11-12,确认,数值规则,P1,W-TEXT-006,零元负数分角与整数边界正确
+W-TEXT-007,简繁转换,Word,不坑盒子,https://www.bukenghezi.com/入门/4.功能列表.html,2026-11-12,确认,合法词库,P1,W-TEXT-007,词库缺失时明确阻塞
+W-TEXT-008,高级替换与正则替换,Word|Excel,不坑盒子|快点,https://www.bukenghezi.com/入门/4.功能列表.html|http://www.kdgw.vip/wz?article_id=13,2026-11-12,确认,正则规则,P1,W-TEXT-008,预览命中并防止灾难性回溯超时
+W-TEXT-009,合并段落与段落选择导航,Word,快点|公文处理助手,http://www.kdgw.vip/wz?article_id=13|http://www.gwclzs.cn/gwclzs_kssz.html,2026-11-12,确认,无,P1,W-TEXT-009,连段单段选区移动与合并可撤销
+W-TEXT-010,指定内容计数高亮与选区遮盖,Word,快点|公文处理助手,http://www.kdgw.vip/wz?article_id=13|http://www.gwclzs.cn/gwclzs_kssz.html,2026-11-12,确认,无,P1,W-TEXT-010,多项命中可清除且不改变文本
+W-TEXT-011,数字符号纠错与去段尾字,Word,公文处理助手,http://www.gwclzs.cn/gwclzs_kssz.html,2026-11-12,待核实,具体纠错规则,P1,W-TEXT-011,官方页面未明确全部规则需样本确认
+W-TEXT-012,缩进转空格与编号间隔清理,Word,公文处理助手,http://www.gwclzs.cn/gwclzs_kssz.html,2026-11-12,确认,无,P1,W-TEXT-012,转换后对齐符合配置
+W-TEXT-013,Markdown渲染与代码高亮,Word,不坑盒子,https://www.bukenghezi.com/入门/4.功能列表.html,2026-11-12,确认,原创解析与配色,P1,W-TEXT-013,常用Markdown语法及代码样式验证
+W-PART-001,单行多行文字与图片红头,Word,不坑盒子|小恐龙|快点|尚书,https://www.bukenghezi.com/入门/4.功能列表.html|https://gw.xkonglong.com/feature.html|http://www.kdgw.vip/wz?article_id=13|http://www.gongwenzhushou.cn/bangzhu.asp,2026-11-12,确认,原创红头模板,P0,W-PART-001,普通信函纪要模板及多机关对齐
+W-PART-002,红线函线分隔线版记线装订线,Word,不坑盒子|小恐龙|快点|尚书,https://www.bukenghezi.com/入门/4.功能列表.html|https://gw.xkonglong.com/feature.html|http://www.kdgw.vip/wz?article_id=13|http://www.gongwenzhushou.cn/bangzhu.asp,2026-11-12,确认,Word形状与表格,P0,W-PART-002,位置尺寸与样张核验
+W-PART-003,落款署名印章与版记沉底,Word,小恐龙|快点|尚书,https://gw.xkonglong.com/feature.html|http://www.kdgw.vip/wz?article_id=13|http://www.gongwenzhushou.cn/bangzhu.asp,2026-11-12,确认,用户合法印章图片,P1,W-PART-003,版记末尾偶数页且不覆盖正文
+W-PART-004,公文日期文号符号常用短语,Word,不坑盒子|小恐龙|快点|公文处理助手|尚书,https://www.bukenghezi.com/入门/4.功能列表.html|https://gw.xkonglong.com/feature.html|http://www.kdgw.vip/wz?article_id=13|http://www.gwclzs.cn/gwclzs_kssz.html|http://www.gongwenzhushou.cn/bangzhu.asp,2026-11-12,确认,用户词库,P0,W-PART-004,自定义内容插入与持久化
+W-PART-005,快速制作目录书签与引用,Word,公文处理助手,http://www.gwclzs.cn/gwclzs_kssz.html,2026-11-12,确认,Word域,P1,W-PART-005,目录更新书签跳转和引用有效
+W-DOC-001,文档追加合并与拆分,Word,不坑盒子|快点|公文处理助手,https://www.bukenghezi.com/入门/4.功能列表.html|http://www.kdgw.vip/wz?article_id=13|http://www.gwclzs.cn/gwclzs_kssz.html,2026-11-12,确认,无,P1,W-DOC-001,按页范围当前页拆分且默认另存
+W-DOC-002,文档比较,Word,快点公文助手,http://www.kdgw.vip/wz?article_id=13,2026-11-12,确认,Word比较功能,P1,W-DOC-002,输出新比较文档不修改原件
+W-DOC-003,PDF图片及通用格式导出,Word,不坑盒子|小恐龙|快点|公文处理助手,https://www.bukenghezi.com/入门/4.功能列表.html|https://gw.xkonglong.com/feature.html|http://www.kdgw.vip/wz?article_id=13|http://www.gwclzs.cn/gwclzs_kssz.html,2026-11-12,确认,Office导出与图像组件,P1,W-DOC-003,导出范围格式分辨率及文件存在性
+W-DOC-004,OFD与跨格式批量转换,Word,快点公文助手,http://www.kdgw.vip/wz?article_id=13,2026-11-12,确认,用户配置合法OFD转换器,P1,W-DOC-004,转换器缺失时阻塞且逐项结果清单
+W-DOC-005,PDF按图片导入,Word,不坑盒子,https://www.bukenghezi.com/入门/4.功能列表.html,2026-11-12,确认,合法PDF渲染器,P1,W-DOC-005,页序清晰度与文件权限验证
+W-DOC-006,文档优化压缩,Word,快点公文助手,http://www.kdgw.vip/wz?article_id=13,2026-11-12,确认,压缩前后内容核验,P1,W-DOC-006,不降低指定质量且默认另存
+W-DOC-007,水印添加删除,Word,不坑盒子|快点,https://www.bukenghezi.com/入门/4.功能列表.html|http://www.kdgw.vip/wz?article_id=13,2026-11-12,确认,文字或用户图片,P1,W-DOC-007,按节处理且可识别本插件水印
+W-DOC-008,批量文档内容替换,Word,快点|公文处理助手,http://www.kdgw.vip/wz?article_id=13|http://www.gwclzs.cn/gwclzs_kssz.html,2026-11-12,确认,批处理,P1,W-DOC-008,预检取消异常隔离不覆盖原件
+W-DOC-009,工作目录归档打印与另存,Word,公文处理助手,http://www.gwclzs.cn/gwclzs_kssz.html,2026-11-12,确认,文件与打印权限,P1,W-DOC-009,路径冲突确认及打印前预览
+W-DOC-010,保存时提取自定义文件名,Word,尚书公文助手,http://www.gongwenzhushou.cn/bangzhu.asp,2026-11-12,确认,命名规则,P1,W-DOC-010,非法字符清理及重名确认
+W-DOC-011,Word取值到Excel,Word|Excel,公文处理助手,http://www.gwclzs.cn/gwclzs_kssz.html,2026-11-12,确认,字段映射,P1,W-DOC-011,缺失字段报告且输出新工作簿
+W-SEC-001,文档加密解密与有效凭据解密,Word|Excel|PowerPoint,不坑盒子|小恐龙|快点,https://www.bukenghezi.com/入门/4.功能列表.html|https://gw.xkonglong.com/feature.html|http://www.kdgw.vip/wz?article_id=13,2026-11-12,确认,用户提供有效密码,P1,W-SEC-001,仅Office正常加密解密流程并保护凭据
+W-SEC-002,文档保护权限设置与有效凭据解除,Word|Excel,小恐龙|快点,https://gw.xkonglong.com/feature.html|http://www.kdgw.vip/wz?article_id=13,2026-11-12,确认,用户提供有效密码,P1,W-SEC-002,不绕过权限且失败保留原状态
+W-SEC-003,破解VBA文档工作簿密码或绕过保护只读,Word|Excel|PowerPoint,不坑盒子|快点,https://www.bukenghezi.com/入门/4.功能列表.html|http://www.kdgw.vip/wz?article_id=13,2026-11-12,排除,不适用,排除,W-SEC-003,不提供破解绕过或克隆受保护内容
+W-IMG-001,图片提取导出与批量插入,Word|PowerPoint,不坑盒子|快点|公文处理助手,https://www.bukenghezi.com/入门/4.功能列表.html|http://www.kdgw.vip/wz?article_id=13|http://www.gwclzs.cn/gwclzs_kssz.html,2026-11-12,确认,文件权限,P1,W-IMG-001,嵌入浮动图片完整提取且重名不覆盖
+W-IMG-002,图片尺寸格式统一与删除,Word|PowerPoint,不坑盒子|快点|公文处理助手,https://www.bukenghezi.com/入门/4.功能列表.html|http://www.kdgw.vip/wz?article_id=13|http://www.gwclzs.cn/gwclzs_kssz.html,2026-11-12,确认,无,P1,W-IMG-002,锁定比例可选且支持撤销或备份
+W-IMG-003,长图裁页与图片分割裁边,Word|PowerPoint,不坑盒子,https://www.bukenghezi.com/入门/4.功能列表.html,2026-11-12,确认,图像组件,P1,W-IMG-003,切片数量尺寸与边缘像素验证
+W-IMG-004,SVG代码粘贴插入,Word|PowerPoint,不坑盒子,https://www.bukenghezi.com/入门/4.功能列表.html,2026-11-12,确认,Office SVG支持,P1,W-IMG-004,不支持版本使用明确提示或合法预览转换
+W-TBL-001,全选表格与表格格式自适应,Word,不坑盒子|快点|公文处理助手,https://www.bukenghezi.com/入门/4.功能列表.html|http://www.kdgw.vip/wz?article_id=13|http://www.gwclzs.cn/gwclzs_kssz.html,2026-11-12,确认,无,P1,W-TBL-001,嵌套表格和跨页表格处理
+W-TBL-002,表格空行空列清理与序号,Word,不坑盒子|快点,https://www.bukenghezi.com/入门/4.功能列表.html|http://www.kdgw.vip/wz?article_id=13,2026-11-12,确认,无,P1,W-TBL-002,合并单元格下不破坏结构
+W-TBL-003,表格转文本删除复制填充,Word,不坑盒子|快点,https://www.bukenghezi.com/入门/4.功能列表.html|http://www.kdgw.vip/wz?article_id=13,2026-11-12,确认,分隔符规则,P1,W-TBL-003,转文本可配置且删除需确认
+W-TBL-004,三线表表格求和求余数,Word,不坑盒子,https://www.bukenghezi.com/入门/4.功能列表.html,2026-11-12,确认,数值解析,P1,W-TBL-004,非数值单元格报告且三线边框正确
+W-TBL-005,每表导出文档与列宽跨页调整,Word|PowerPoint,不坑盒子|公文处理助手,https://www.bukenghezi.com/入门/4.功能列表.html|http://www.gwclzs.cn/gwclzs_kssz.html,2026-11-12,确认,批处理,P1,W-TBL-005,输出独立文件且跨页标题行正确
+W-LABEL-001,档案标签座牌与座次图,Word,不坑盒子|快点|尚书,https://www.bukenghezi.com/入门/4.功能列表.html|http://www.kdgw.vip/wz?article_id=13|http://www.gongwenzhushou.cn/bangzhu.asp,2026-11-12,确认,原创模板,P1,W-LABEL-001,名单批量生成打印与空项处理
+W-EDU-001,数学口算选项对齐与挖词填空,Word|PowerPoint,不坑盒子,https://www.bukenghezi.com/入门/4.功能列表.html,2026-11-12,确认,题目生成规则,P1,W-EDU-001,答案唯一性填空模式及选项对齐
+W-EDU-002,拼音标注与拼音练习,Word|Excel,不坑盒子|方方格子,https://www.bukenghezi.com/入门/4.功能列表.html|http://www.ffcell.com/home/ffcell.aspx,2026-11-12,确认,合法拼音词库,P1,W-EDU-002,多音字规则可配置缺库阻塞
+W-EDU-003,田字米字四线方格与关系括号,Word,不坑盒子,https://www.bukenghezi.com/入门/4.功能列表.html,2026-11-12,确认,原创图形,P1,W-EDU-003,网格尺寸打印及文字定位
+W-EDU-004,汉字笔画笔顺与笔画拆分,Word|PowerPoint,不坑盒子,https://www.bukenghezi.com/入门/4.功能列表.html,2026-11-12,确认,合法笔画数据,P1,W-EDU-004,缺字报告不使用第三方私有数据
+W-EDU-005,化学与离子方程式排版,Word,不坑盒子,https://www.bukenghezi.com/入门/4.功能列表.html,2026-11-12,确认,化学排版规则,P1,W-EDU-005,上下标电荷与可逆符号验证
+W-EDU-006,仿手写,Word,不坑盒子,https://www.bukenghezi.com/入门/4.功能列表.html,2026-11-12,确认,用户合法字体,P1,W-EDU-006,字体授权与输出抽样核验
+E-EDIT-001,批量插入行列与横纵复制,Excel,不坑盒子|方方格子,https://www.bukenghezi.com/入门/4.功能列表.html|http://www.ffcell.com/home/ffcell.aspx,2026-11-12,确认,无,P0,E-EDIT-001,行列数量边界公式引用与撤销备份
+E-EDIT-002,文本数值日期互转与前后添加文本,Excel,不坑盒子|方方格子,https://www.bukenghezi.com/入门/4.功能列表.html|http://www.ffcell.com/home/ffcell.aspx,2026-11-12,确认,区域格式规则,P0,E-EDIT-002,保留原始值可恢复且日期区域明确
+E-EDIT-003,正则提取与替换,Excel,不坑盒子,https://www.bukenghezi.com/入门/4.功能列表.html,2026-11-12,确认,正则规则,P1,E-EDIT-003,超时与无命中处理
+E-EDIT-004,行列转置,Excel,方方格子,http://www.ffcell.com/home/ffcell.aspx,2026-11-12,确认,无,P1,E-EDIT-004,公式值与格式策略明确
+E-DEL-001,不可见字符空白行列删除,Excel,不坑盒子|方方格子,https://www.bukenghezi.com/入门/4.功能列表.html|http://www.ffcell.com/home/ffcell.aspx,2026-11-12,确认,纯数据规则,P0,E-DEL-001,只处理选区并保留含公式或格式的有效行列
+E-DEL-002,重复值与重复行处理,Excel,不坑盒子|方方格子,https://www.bukenghezi.com/入门/4.功能列表.html|http://www.ffcell.com/home/ffcell.aspx,2026-11-12,确认,比较键配置,P0,E-DEL-002,首项保留及大小写规则明确
+E-MERGE-001,数据合并简单汇总与Sheet合并,Excel,不坑盒子|方方格子,https://www.bukenghezi.com/入门/4.功能列表.html|http://www.ffcell.com/home/ffcell.aspx,2026-11-12,确认,字段映射,P0,E-MERGE-001,表头一致性检查及来源清单
+E-MERGE-002,名单清理与假合并相同内容合并,Excel,不坑盒子,https://www.bukenghezi.com/入门/4.功能列表.html,2026-11-12,确认,合并规则,P1,E-MERGE-002,取消合并填值与相邻同值合并不丢数据
+E-SPLIT-001,按符号与合并内容拆分,Excel,不坑盒子,https://www.bukenghezi.com/入门/4.功能列表.html,2026-11-12,确认,分隔规则,P1,E-SPLIT-001,空字段和转义处理
+E-SPLIT-002,拆分表到Sheet与表导文件,Excel,不坑盒子|方方格子,https://www.bukenghezi.com/入门/4.功能列表.html|http://www.ffcell.com/home/ffcell.aspx,2026-11-12,确认,批处理,P0,E-SPLIT-002,复制剔除模式及无效Sheet名冲突处理
+E-SPLIT-003,筛选导新表与根据单元格生成表,Excel,不坑盒子,https://www.bukenghezi.com/入门/4.功能列表.html,2026-11-12,确认,筛选映射,P1,E-SPLIT-003,筛选结果和模板字段核验
+E-CMP-001,数据对比,Excel,方方格子,http://www.ffcell.com/home/ffcell.aspx,2026-11-12,确认,键与容差配置,P0,E-CMP-001,新增缺失不同项结果可溯源
+E-SORT-001,基础高级颜色及合并单元格排序,Excel,方方格子,http://www.ffcell.com/home/ffcell.aspx,2026-11-12,确认,排序规则,P0,E-SORT-001,多键稳定排序且公式引用策略明确
+E-ID-001,身份证校验生日性别年龄,Excel,不坑盒子|方方格子,https://www.bukenghezi.com/入门/4.功能列表.html|http://www.ffcell.com/home/ffcell.aspx,2026-11-12,确认,GB 11643校验规则,P1,E-ID-001,18位校验码日期闰年及年龄基准日
+E-ID-002,身份证归属地与脱敏,Excel,不坑盒子|方方格子,https://www.bukenghezi.com/入门/4.功能列表.html|http://www.ffcell.com/home/ffcell.aspx,2026-11-12,确认,合法区划数据,P1,E-ID-002,区划数据缺失只阻塞归属地不影响脱敏
+E-RAND-001,随机模拟与随身资料生成,Excel,不坑盒子,https://www.bukenghezi.com/入门/4.功能列表.html,2026-11-12,待核实,生成规则与合法数据源,P1,E-RAND-001,明确随机数据不得冒充真实个人资料
+E-FIN-001,银行家舍入与财务工具,Excel,不坑盒子|方方格子,https://www.bukenghezi.com/入门/4.功能列表.html|http://www.ffcell.com/home/ffcell.aspx,2026-11-12,确认,十进制计算,P1,E-FIN-001,中点舍入精度与财务公式样本
+E-FIN-002,凑数求解,Excel,不坑盒子,https://www.bukenghezi.com/入门/4.功能列表.html,2026-11-12,确认,组合求解算法,P1,E-FIN-002,无解多解超时取消及结果校验
+E-VIS-001,聚光灯隔行填色条状图进度条,Excel,不坑盒子|方方格子,https://www.bukenghezi.com/入门/4.功能列表.html|http://www.ffcell.com/home/ffcell.aspx,2026-11-12,确认,Excel条件格式与事件,P1,E-VIS-001,关闭后恢复原样式且不覆盖用户规则
+E-VIS-002,简易甘特图,Excel,不坑盒子,https://www.bukenghezi.com/入门/4.功能列表.html,2026-11-12,确认,日期规则,P1,E-VIS-002,跨月日期和无效区间处理
+E-NAV-001,工作表导航,Excel,方方格子,http://www.ffcell.com/home/ffcell.aspx,2026-11-12,确认,任务窗格,P1,E-NAV-001,新增删除重命名隐藏表状态同步
+E-PAY-001,工资条生成,Excel,不坑盒子,https://www.bukenghezi.com/入门/4.功能列表.html,2026-11-12,确认,表头与数据映射,P0,E-PAY-001,每人标题间隔行且原始表不变
+E-PRINT-001,模板套打与打印专题,Excel,不坑盒子|方方格子,https://www.bukenghezi.com/入门/4.功能列表.html|http://www.ffcell.com/home/ffcell.aspx,2026-11-12,确认,打印机和原创模板,P1,E-PRINT-001,打印范围分页及空数据预览
+E-QR-001,单元格二维码,Excel,不坑盒子,https://www.bukenghezi.com/入门/4.功能列表.html,2026-11-12,确认,原创或许可二维码库,P1,E-QR-001,内容长度中文与纠错级别验证
+E-IMG-001,图片专题工具,Excel,方方格子,http://www.ffcell.com/home/ffcell.aspx,2026-11-12,待核实,公开子功能清单,P1,E-IMG-001,按确认子功能逐项验证不猜测未公开细节
+E-EDU-001,成绩单独与全面统计,Excel,不坑盒子|方方格子,https://www.bukenghezi.com/入门/4.功能列表.html|http://www.ffcell.com/home/ffcell.aspx,2026-11-12,确认,统计口径配置,P1,E-EDU-001,缺考零分满分及格线优秀率和排名
+E-EDU-002,简易分班与详情统计,Excel,不坑盒子,https://www.bukenghezi.com/入门/4.功能列表.html,2026-11-12,待核实,分班与详情统计规则,P1,E-EDU-002,约束可解释且结果可重现
+E-SEARCH-001,快查快录,Excel,方方格子,http://www.ffcell.com/home/ffcell.aspx,2026-11-12,确认,字段映射,P1,E-SEARCH-001,精确匹配重复键和回写位置验证
+E-INVOICE-001,电子发票批量读取,Excel,不坑盒子,https://www.bukenghezi.com/入门/4.功能列表.html,2026-11-12,确认,用户配置合法OCR或发票解析器,P3,E-INVOICE-001,字段置信度重复发票及失败清单
+E-DIST-001,数据分发查询页,Excel,不坑盒子,https://www.bukenghezi.com/入门/4.功能列表.html,2026-11-12,确认,独立Web服务与授权,P3,E-DIST-001,最小化公开字段及访问控制
+E-COMM-001,邮件或消息群发,Excel,不坑盒子|方方格子,https://www.bukenghezi.com/入门/4.功能列表.html|http://www.ffcell.com/home/ffcell.aspx,2026-11-12,确认,用户配置服务及收件人授权,P3,E-COMM-001,预览限流逐项结果与凭据脱敏
+P-CLEAN-001,空白页与隐藏页清理,PowerPoint,不坑盒子,https://www.bukenghezi.com/入门/4.功能列表.html,2026-11-12,确认,无,P0,P-CLEAN-001,备注母版认定规则及删除确认
+P-CLEAN-002,动画与切换清理,PowerPoint,不坑盒子,https://www.bukenghezi.com/入门/4.功能列表.html,2026-11-12,确认,无,P0,P-CLEAN-002,全部或选区范围且形状内容不变
+P-CLEAN-003,未用母版清理,PowerPoint,不坑盒子,https://www.bukenghezi.com/入门/4.功能列表.html,2026-11-12,确认,PowerPoint对象模型,P1,P-CLEAN-003,仅删除确认未使用母版且保护默认母版
+P-DESIGN-001,基础一键配色与设计模板,PowerPoint,不坑盒子,https://www.bukenghezi.com/入门/4.功能列表.html,2026-11-12,确认,原创主题,P0,P-DESIGN-001,文本背景形状映射且不改变图片
+P-DESIGN-002,渐变蒙层金属质感云朵字绿膜,PowerPoint,不坑盒子,https://www.bukenghezi.com/入门/4.功能列表.html,2026-11-12,确认,原创效果参数,P1,P-DESIGN-002,选中对象效果及撤销备份
+P-SHAPE-001,形状尺寸变化对齐横靠竖靠与翻转,PowerPoint,不坑盒子,https://www.bukenghezi.com/入门/4.功能列表.html,2026-11-12,确认,无,P0,P-SHAPE-001,多选边界组合对象和锁定比例
+P-SHAPE-002,形状过渡与打散文本,PowerPoint,不坑盒子,https://www.bukenghezi.com/入门/4.功能列表.html,2026-11-12,确认,插值与文本拆分规则,P1,P-SHAPE-002,过渡数量位置大小及文字顺序
+P-SHAPE-003,样机展示,PowerPoint,不坑盒子,https://www.bukenghezi.com/入门/4.功能列表.html,2026-11-12,确认,原创样机素材,P1,P-SHAPE-003,图片适配比例及导出效果
+P-DOC-001,追加演示文档,PowerPoint,不坑盒子,https://www.bukenghezi.com/入门/4.功能列表.html,2026-11-12,确认,无,P1,P-DOC-001,保留源格式策略与页序
+P-DOC-002,提取资源与备注,PowerPoint,不坑盒子,https://www.bukenghezi.com/入门/4.功能列表.html,2026-11-12,确认,文件权限,P1,P-DOC-002,媒体字体可提取范围与备注文本清单
+P-DOC-003,导出幻灯片图片,PowerPoint,不坑盒子,https://www.bukenghezi.com/入门/4.功能列表.html,2026-11-12,确认,Office导出,P0,P-DOC-003,范围分辨率格式及不覆盖重名文件
+P-DOC-004,长图跨页与图片分割,PowerPoint,不坑盒子,https://www.bukenghezi.com/入门/4.功能列表.html,2026-11-12,确认,图像组件,P1,P-DOC-004,切片连续无像素遗漏
+P-DOC-005,插入网页,PowerPoint,不坑盒子,https://www.bukenghezi.com/入门/4.功能列表.html,2026-11-12,确认,用户URL与WebView运行时,P1,P-DOC-005,离线失败提示不执行未授权脚本
+P-PLAY-001,倒计时与快速触发,PowerPoint,不坑盒子,https://www.bukenghezi.com/入门/4.功能列表.html,2026-11-12,确认,计时器,P1,P-PLAY-001,开始暂停重置及放映状态
+P-PLAY-002,朗读转音频与备注提词,PowerPoint|Word,不坑盒子|小恐龙|快点,https://www.bukenghezi.com/入门/4.功能列表.html|https://gw.xkonglong.com/feature.html|http://www.kdgw.vip/wz?article_id=13,2026-11-12,确认,用户配置TTS或系统语音,P3,P-PLAY-002,语速保存范围与服务失败恢复
+P-PLAY-003,手机遥控与互动弹幕,PowerPoint,不坑盒子,https://www.bukenghezi.com/入门/4.功能列表.html,2026-11-12,确认,独立Web服务与配对授权,P3,P-PLAY-003,配对过期断线重连与内容审核
+P-FONT-001,字体及许可元数据查看,PowerPoint,不坑盒子,https://www.bukenghezi.com/入门/4.功能列表.html,2026-11-12,确认,可靠字体许可元数据,P1,P-FONT-001,仅展示已知元数据不作侵权法律判断
+AI-001,智能写作与智能助手,Word|Excel|PowerPoint,不坑盒子|方方格子,https://www.bukenghezi.com/入门/4.功能列表.html|http://www.ffcell.com/home/ffcell.aspx,2026-11-12,确认,用户配置AI服务,P3,AI-001,上下文范围确认流式取消及错误脱敏
+AI-002,OCR,Word,不坑盒子,https://www.bukenghezi.com/入门/4.功能列表.html,2026-11-12,确认,用户配置OCR服务,P3,AI-002,图片格式语言与置信度失败重试
+AI-003,翻译,Word|Excel,不坑盒子|方方格子,https://www.bukenghezi.com/入门/4.功能列表.html|http://www.ffcell.com/home/ffcell.aspx,2026-11-12,确认,用户配置翻译服务,P3,AI-003,源目标语言保留格式及取消
+AI-004,AI提示词括号与拓展功能区,Word|Excel|PowerPoint,不坑盒子|方方格子,https://www.bukenghezi.com/入门/4.功能列表.html|http://www.ffcell.com/home/ffcell.aspx,2026-11-12,确认,用户提示词模板,P3,AI-004,模板变量校验与本地保存

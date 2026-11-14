@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<customUI xmlns="http://schemas.microsoft.com/office/2009/07/customui">
+  <ribbon>
+    <tabs>
+      <tab id="tabSuitePowerPoint" label="办公增效">
+        <group id="groupSuiteCommon" label="通用">
+          <editBox id="SuiteSearchText" label="功能搜索" sizeString="十二个汉字宽度" onChange="OnSearchChanged" />
+          <button id="SuiteSearch" label="查找并执行" imageMso="FindDialog" onAction="OnSearch" />
+          <button id="SuiteDocuments" label="文档管理" imageMso="WindowSwitchWindowsMenu" onAction="OnDocuments" />
+          <button id="SuiteNativeTabs" label="原生标签状态" imageMso="WindowNew" onAction="OnNativeTabs" />
+          <button id="SuiteSettings" label="设置" imageMso="ComAddInsDialog" onAction="OnSettings" />
+          <button id="SuiteAbout" label="帮助与版本" imageMso="Help" onAction="OnAbout" />
+        </group>
+        <group id="groupPresentationCleanup" label="演示文稿清理">
+          <button id="buttonCleanupBlankSlides" tag="P-CLEAN-001-BLANK" label="清理空白页" screentip="仅清理确认无内容的页面；隐藏页、媒体、备注和隐藏形状会保留。" onAction="OnRibbonAction" />
+          <button id="buttonCleanupHiddenSlides" tag="P-CLEAN-001-HIDDEN" label="清理隐藏页" screentip="经确认后删除全部隐藏页，执行前创建备份。" onAction="OnRibbonAction" />
+          <button id="buttonCleanupAnimations" tag="P-CLEAN-002-ANIMATION" label="清理动画" screentip="删除当前演示文稿中的动画效果，执行前创建备份。" onAction="OnRibbonAction" />
+          <button id="buttonCleanupTransitions" tag="P-CLEAN-002-TRANSITION" label="清理切换" screentip="清除切换效果和自动换片时间，不改变隐藏状态。" onAction="OnRibbonAction" />
+        </group>
+        <group id="groupShapeLayout" label="形状整理">
+          <button id="buttonAlignLeft" tag="P-SHAPE-001-LEFT" label="左对齐" onAction="OnRibbonAction" />
+          <button id="buttonAlignRight" tag="P-SHAPE-001-RIGHT" label="右对齐" onAction="OnRibbonAction" />
+          <button id="buttonAlignTop" tag="P-SHAPE-001-TOP" label="上对齐" onAction="OnRibbonAction" />
+          <button id="buttonAlignBottom" tag="P-SHAPE-001-BOTTOM" label="下对齐" onAction="OnRibbonAction" />
+          <button id="buttonFlipHorizontal" tag="P-SHAPE-001-FLIPH" label="水平翻转" onAction="OnRibbonAction" />
+          <button id="buttonFlipVertical" tag="P-SHAPE-001-FLIPV" label="垂直翻转" onAction="OnRibbonAction" />
+          <button id="buttonUniformWidth" tag="P-SHAPE-001-WIDTH" label="统一宽度" screentip="以首个选中形状的宽度为准。" onAction="OnRibbonAction" />
+          <button id="buttonUniformHeight" tag="P-SHAPE-001-HEIGHT" label="统一高度" onAction="OnRibbonAction" />
+        </group>
+        <group id="groupShapeColors" label="选定形状主题填充">
+          <button id="buttonThemeAccent1" tag="P-DESIGN-001-ACCENT1" label="主题强调色 1" screentip="仅修改选定形状的填充。" onAction="OnRibbonAction" />
+          <button id="buttonThemeAccent2" tag="P-DESIGN-001-ACCENT2" label="主题强调色 2" screentip="仅修改选定形状的填充。" onAction="OnRibbonAction" />
+          <button id="buttonThemeAccent3" tag="P-DESIGN-001-ACCENT3" label="主题强调色 3" screentip="仅修改选定形状的填充。" onAction="OnRibbonAction" />
+        </group>
+        <group id="groupPresentationExport" label="导出">
+          <button id="buttonExportPng" tag="P-DOC-003-PNG" label="逐页导出 PNG" screentip="导出到所选目录，自动避开同名文件。" onAction="OnRibbonAction" />
+        </group>
+      </tab>
+    </tabs>
+  </ribbon>
+</customUI>

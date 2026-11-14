@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>办公增效套件 · 产品需求文档</title>
+<style>
+:root{--ink:#172033;--muted:#63708a;--line:#dfe5ef;--paper:#fff;--bg:#f4f6fa;--brand:#2855d9;--brand-soft:#eaf0ff;--good:#087a55;--warn:#a15c00;--bad:#b42318;--radius:14px}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.75 system-ui,-apple-system,"Segoe UI","Microsoft YaHei",sans-serif}a{color:var(--brand);text-underline-offset:3px}header{background:linear-gradient(135deg,#172b68,#2855d9);color:#fff;padding:52px max(24px,calc((100vw - 1180px)/2)) 44px}header .eyebrow{font-size:12px;letter-spacing:.18em;text-transform:uppercase;opacity:.75}h1{font-size:34px;line-height:1.25;margin:10px 0}header p{max-width:820px;margin:8px 0;opacity:.9}.meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}.meta span{border:1px solid #ffffff44;border-radius:99px;padding:3px 12px;font-size:12px}.layout{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:230px minmax(0,1fr);gap:28px;padding:28px 24px 60px}nav{position:sticky;top:20px;align-self:start;background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:14px}nav a{display:block;color:var(--muted);text-decoration:none;padding:7px 10px;border-radius:8px;font-size:13px}nav a:hover{background:var(--brand-soft);color:var(--brand)}main{min-width:0}section{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:28px;margin-bottom:22px;scroll-margin-top:20px}h2{font-size:23px;line-height:1.35;margin:0 0 18px}h3{font-size:17px;margin:26px 0 10px}h4{font-size:15px;margin:20px 0 8px}p{margin:8px 0}.lead{font-size:16px;color:#33415e}.note,.warning,.decision{padding:13px 16px;border-radius:10px;margin:14px 0}.note{background:#f1f5ff;border-left:3px solid var(--brand)}.warning{background:#fff7e8;border-left:3px solid #d98700}.decision{background:#edf9f4;border-left:3px solid var(--good)}code{background:#eef1f6;border-radius:5px;padding:2px 6px;font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:12px}table{border-collapse:collapse;width:100%;margin:12px 0;font-size:13px;display:block;overflow-x:auto}th,td{border-bottom:1px solid var(--line);padding:11px 12px;text-align:left;vertical-align:top;min-width:110px}th{background:#f7f9fc;color:#47536a;font-weight:650;white-space:nowrap}td:first-child{font-weight:600;white-space:nowrap}ul,ol{padding-left:22px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.card{border:1px solid var(--line);border-radius:11px;padding:16px;background:#fbfcfe}.card strong{display:block;margin-bottom:4px}.card small{color:var(--muted)}.tag{display:inline-block;padding:1px 8px;border-radius:99px;background:var(--brand-soft);color:var(--brand);font-size:11px;font-weight:650;white-space:nowrap}.tag.p1{background:#f2ecff;color:#6941c6}.tag.p2,.tag.p3{background:#fff1e7;color:#b54708}.tag.exclude{background:#feeceb;color:var(--bad)}.filters{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 18px}.filters button,.demo button{border:1px solid var(--line);background:#fff;color:var(--ink);padding:7px 12px;border-radius:8px;cursor:pointer;font:inherit;font-size:13px}.filters button.active,.filters button:hover,.demo button:hover{border-color:var(--brand);color:var(--brand);background:var(--brand-soft)}.req{border-top:1px solid var(--line);padding:16px 0}.req:first-of-type{border-top:0}.req[data-hidden]{display:none}.req h3{margin:0 0 6px}.req p{color:#3c4961}.ids{font-size:12px;color:var(--muted);margin-top:7px}.demo{border:1px solid var(--line);border-radius:12px;padding:16px;background:#f8faff;margin:16px 0}.demo-bar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:12px}.demo input{border:1px solid #b9c5da;border-radius:8px;padding:8px 10px;font:inherit;min-width:220px}.docs{display:grid;grid-template-columns:190px 1fr;gap:12px}.doc-list{display:grid;gap:6px}.doc-item{display:flex;gap:7px;align-items:center;border:1px solid var(--line);background:#fff;border-radius:8px;padding:8px;cursor:pointer;font-size:13px}.doc-item.active{border-color:var(--brand);box-shadow:inset 3px 0 var(--brand)}.dot{width:8px;height:8px;border-radius:50%;background:#7a5af8;flex:none}.doc-preview{background:#fff;border:1px solid var(--line);border-radius:8px;padding:18px;min-height:126px}.demo-status{color:var(--muted);font-size:12px;min-height:22px;margin-top:8px}.batch{font-family:ui-monospace,Consolas,monospace;background:#111a2e;color:#d6e1ff;border-radius:8px;padding:12px;font-size:12px;white-space:pre-wrap}.footer{color:var(--muted);font-size:12px;text-align:center;padding:0 20px 30px}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}@media(max-width:900px){.layout{grid-template-columns:1fr}nav{position:static;display:flex;overflow:auto;padding:8px}nav a{white-space:nowrap}.grid{grid-template-columns:1fr}.docs{grid-template-columns:1fr}header{padding-top:36px}h1{font-size:28px}}@media print{body{background:#fff}header{background:#fff;color:#000;padding:20px 0}nav,.filters,.demo{display:none}.layout{display:block;padding:0}section{break-inside:avoid;border:0;border-bottom:1px solid #ccc;border-radius:0;padding:18px 0}.tag{border:1px solid #aaa}a{color:#000}}
+</style>
+</head>
+<body>
+<header>
+  <div class="eyebrow">Product Requirements Document</div>
+  <h1>办公增效套件</h1>
+  <p>将公开可确认的公文排版、Excel 数据处理、PowerPoint 效率工具与多文档管理，整合为一套原创、可追溯、可恢复的 Office 插件。</p>
+  <div class="meta"><span>版本 1.0</span><span>2026-11-12</span><span>Word · Excel · PowerPoint</span><span>工作名，正式名称 [TBD]</span></div>
+</header>
+<div class="layout">
+<nav aria-label="文档目录">
+  <a href="#contract">01 产品契约</a><a href="#scope">02 范围与状态</a><a href="#model">03 对象与规则</a><a href="#p0">04 P0 功能需求</a><a href="#p1">05 扩展功能需求</a><a href="#connected">06 连接型功能</a><a href="#exceptions">07 异常与恢复</a><a href="#open">08 待确认事项</a><a href="PublicFeatureMatrix.csv">逐项功能矩阵 CSV</a>
+</nav>
+<main>
+<section id="contract">
+<h2>01 产品契约</h2>
+<p class="lead">主要用户是需要在 Microsoft Office 中完成公文制作、批量数据处理和演示文稿整理的办公人员。用户从插件功能区或功能搜索发起任务；任务以可检查的目标文档、数据区域或导出文件完成，并在失败时保留原件、给出可重试的原因。</p>
+<div class="grid">
+ <div class="card"><strong>触发</strong><small>打开 Word、Excel 或 PowerPoint 后，通过功能区、文档侧栏或搜索启动命令。</small></div>
+ <div class="card"><strong>核心工作</strong><small>用去重后的统一能力完成排版、清理、转换、汇总拆分和文档切换，而非学习多套插件入口。</small></div>
+ <div class="card"><strong>完成证据</strong><small>显示变更范围、输出路径、跳过项和失败项；破坏性操作可撤销或已有备份。</small></div>
+</div>
+<h3>产品决策</h3>
+<div class="decision"><strong>本地优先。</strong>文档处理默认在本机完成。只有用户主动使用在线功能时，才发送该功能明确列出的内容；发送前展示数据范围和服务提供方。</div>
+<div class="decision"><strong>一项能力，一个入口。</strong>相同页面设置、标题样式、红头页码、清理、图片、表格、汇总拆分等能力只保留一个命令，通过参数覆盖不同场景。</div>
+<div class="warning"><strong>可信边界。</strong>不提供密码破解、VBA 密码去除、只读或保护绕过，不克隆无权编辑的受保护内容。正常解密与解除保护必须以用户提供有效凭据为前提。</div>
+<p>范围依据为各产品官方公开页面，检索日期均为 2026-11-12：<a href="https://www.bukenghezi.com/入门/4.功能列表.html">不坑盒子功能列表</a>、<a href="http://www.ffcell.com/home/ffcell.aspx">方方格子</a>、<a href="https://www.extendoffice.com/products/office-tab.html">Office Tab</a>、<a href="https://gw.xkonglong.com/feature.html">小恐龙</a>、<a href="http://www.kdgw.vip/wz?article_id=13">快点公文助手</a>、<a href="http://www.gwclzs.cn/gwclzs_kssz.html">公文处理助手</a>、<a href="http://www.gongwenzhushou.cn/bangzhu.asp">尚书公文助手</a>。公开页面未披露的内部行为不推断为已覆盖。</p>
+</section>
+<section id="scope">
+<h2>02 范围与交付状态</h2>
+<p>目标环境为 Windows 10/11 上 Microsoft Office 2016、2019、2021 与 Microsoft 365 的 32/64 位 Word、Excel、PowerPoint。WPS、macOS、Linux、Publisher、Access、Project、Visio 不在当前范围内。</p>
+<table><thead><tr><th>阶段</th><th>完整用户旅程</th><th>完成条件</th></tr></thead><tbody>
+<tr><td><span class="tag">P0</span></td><td>可发现命令 → 公文/数据/PPT 核心处理 → 文档切换 → 结果反馈与恢复</td><td>三端均可加载；首批垂直能力有可见结果；原件保护、取消和异常路径成立。</td></tr>
+<tr><td><span class="tag p1">P1</span></td><td>更多文档、表格、图片、教学、财务、打印和窗口定制能力</td><td>仅公开可确认且可桌面实现的能力进入；依赖和规则缺口可见。</td></tr>
+<tr><td><span class="tag p2">P2</span></td><td>单窗口原生标签、拖拽分组、重命名、多窗口合并</td><td>通过 Office 版本、DPI、多显示器稳定性验证；未通过前只交付基础侧栏。</td></tr>
+<tr><td><span class="tag p3">P3</span></td><td>用户配置 AI、OCR、翻译、语音、消息及配套查询/遥控服务</td><td>授权、数据范围、取消、失败恢复和凭据保护均有效。</td></tr>
+</tbody></table>
+<p>逐项功能 ID、原产品、来源 URL、技术依赖、排除原因和验证用例见 <a href="PublicFeatureMatrix.csv">PublicFeatureMatrix.csv</a>。矩阵是唯一逐项范围基线，状态含义如下：</p>
+<table><thead><tr><th>状态</th><th>含义</th></tr></thead><tbody>
+<tr><td>确认</td><td>公开资料可确认，纳入对应阶段；不表示已经开发或验证完成。</td></tr><tr><td>待核实</td><td>名称可见但规则或子功能不足，不编造行为。</td></tr><tr><td>排除</td><td>与授权、安全或当前产品边界冲突，不实施。</td></tr><tr><td>延期</td><td>已确认但当前依赖或验证条件不具备，保留明确原因。</td></tr><tr><td>已实现</td><td>代码路径已存在且对应验证用例已执行；真实 Office 未验证时不得使用此状态。</td></tr>
+</tbody></table>
+</section>
+<section id="model">
+<h2>03 对象与共享规则</h2>
+<h3>核心对象</h3>
+<table><thead><tr><th>对象</th><th>必备信息</th><th>生命周期</th></tr></thead><tbody>
+<tr><td>文档会话</td><td>宿主、文档标识、显示名、路径、颜色、保存状态</td><td>已打开 ↔ 已修改 → 已保存 → 已关闭；关闭未保存文档必须确认。</td></tr>
+<tr><td>命令</td><td>稳定功能 ID、名称、宿主、参数、风险、可用状态</td><td>可用 → 预检 → 执行中 → 成功/部分成功/失败/已取消。</td></tr>
+<tr><td>批处理</td><td>输入清单、输出目录、冲突策略、进度、逐项结果</td><td>待预检 → 待确认 → 执行中 → 已完成/部分完成/已取消。</td></tr>
+<tr><td>模板</td><td>名称、适用宿主、版本、参数、原创或许可说明</td><td>草稿 → 可用 → 停用；导入同名模板必须选择重命名或明确替换。</td></tr>
+<tr><td>服务连接</td><td>提供方、凭据引用、允许的数据类型、超时</td><td>未配置 → 待验证 → 可用/不可用；密钥不写入日志或模板。</td></tr>
+</tbody></table>
+<h3>统一执行规则</h3>
+<ol>
+<li><strong>预检：</strong>无打开文档、空选区、受保护范围、缺失依赖、无效路径或不支持的版本时，在执行前说明原因；不产生半完成输出。</li>
+<li><strong>原件保护：</strong>批处理、拆分、转换、导出默认写入新位置。发现同名文件时要求选择新名称或明确覆盖，不允许静默覆盖。</li>
+<li><strong>恢复：</strong>单项编辑优先使用宿主撤销；无法可靠撤销时先创建备份并明确提示。撤销不可用时不得显示“可撤销”。</li>
+<li><strong>取消：</strong>取消后停止接收新项，完成当前不可中断的最小步骤，列出已处理、未处理和已生成文件。</li>
+<li><strong>逐项隔离：</strong>单个文件或记录失败不抹掉其他成功项；结果包含输入、输出、状态和可读原因。</li>
+<li><strong>凭据：</strong>密码和密钥只用于当次授权操作或用户明确保存的连接；界面与日志均脱敏。</li>
+</ol>
+<div class="demo" aria-label="批处理状态演示">
+<strong>批处理反馈演示</strong>
+<div class="demo-bar"><button id="runBatch" type="button">模拟预检</button><button id="cancelBatch" type="button">模拟取消</button></div>
+<div class="batch" id="batchOut">等待预检：3 个输入文件，默认另存到输出目录。</div>
+</div>
+</section>
+<section id="p0">
+<h2>04 P0 功能需求</h2>
+<p>以下需求组成第一条完整旅程。选择筛选器可查看对应宿主；每项详细来源仍以功能矩阵为准。</p>
+<div class="filters" role="group" aria-label="筛选 P0 需求"><button class="active" data-filter="all">全部</button><button data-filter="common">通用</button><button data-filter="word">Word</button><button data-filter="excel">Excel</button><button data-filter="powerpoint">PowerPoint</button></div>
+<article class="req" data-host="common"><h3>FR-COM-01 功能发现、设置与帮助 <span class="tag">P0</span></h3><p>用户在功能区或搜索框输入名称、关键词后，只看到当前宿主可用命令；不可用命令显示原因而非无响应。设置按用户保存，损坏或不可读时保留原文件并回退到安全默认值。帮助展示当前版本、功能说明和依赖状态。</p><div class="ids">COM-001、COM-002、COM-006</div></article>
+<article class="req" data-host="common"><h3>FR-DOC-01 文档切换侧栏 <span class="tag">P0</span></h3><p>打开、新建、激活、重命名和关闭文档后，侧栏同步当前宿主的文档列表。用户可激活、保存或关闭单项，也可全部保存、全部关闭；未保存项逐个进入确认流程。颜色标记按文档标识恢复，不修改文档内容。侧栏是基础标签能力，不宣称等同于单窗口原生标签。</p><div class="ids">DOC-001、DOC-002、DOC-003</div></article>
+<div class="demo" data-host="common">
+<strong>FR-DOC-01 交互演示</strong>
+<div class="demo-bar"><input id="commandSearch" type="search" placeholder="搜索：保存、关闭、页面…" aria-label="搜索命令"><button id="saveAll" type="button">全部保存</button><button id="closeAll" type="button">全部关闭</button></div>
+<div class="docs"><div class="doc-list" id="docList"></div><div class="doc-preview"><strong id="docTitle">请示样例.docx</strong><p id="docState">已修改 · 紫色标记</p><small>选择左侧文档可切换。此演示不修改真实文件。</small></div></div>
+<div class="demo-status" id="docFeedback" aria-live="polite"></div>
+</div>
+<article class="req" data-host="word"><h3>FR-W-01 页面与页码 <span class="tag">P0</span></h3><p>用户可选择公文页面模板或当前页面参数，设置 A4 版心、文档网格、页边距和页码。插入横页或将当前页转横页时保持前后内容顺序及节属性；页码支持居中、居右、奇偶外侧与横向页短边。信函首页独立规则在 P1 扩展，不在 P0 隐式启用。</p><div class="ids">W-PAGE-001、W-PAGE-002、W-PAGE-004、W-PAGE-007、W-PAGE-008</div></article>
+<article class="req" data-host="word"><h3>FR-W-02 公文样式与标题 <span class="tag">P0</span></h3><p>用户可对选区或全文应用大标题、正文和一至四级标题。自动排版只处理可识别段落，输出跳过项；标题提级、降级和修正不触碰普通正文。所有样式来自原创模板，用户明确选择后才替换同名自定义样式。</p><div class="ids">W-STYLE-001、W-STYLE-002、W-STYLE-003</div></article>
+<article class="req" data-host="word"><h3>FR-W-03 文本重排与清理 <span class="tag">P0</span></h3><p>断行重排保留真正的标题、列表和段落边界；空白清理分别提供段前、文中、空段和不可见字符选项；删除超链接保留显示文字；清理直接格式时保留用户指定的语义样式。默认作用于选区，未选择内容时必须确认全文范围。</p><div class="ids">W-TEXT-001、W-TEXT-002、W-TEXT-003</div></article>
+<article class="req" data-host="word"><h3>FR-W-04 红头、线条与常用部件 <span class="tag">P0</span></h3><p>用户可插入单行/多行文字红头、图片红头、红线、函线、分隔线、版记线、日期、文号、常用符号和短语。多机关名称保持对齐；图片由用户合法提供。部件插入位置可见且与正文不重叠，重复插入前提示。</p><div class="ids">W-PART-001、W-PART-002、W-PART-004</div></article>
+<article class="req" data-host="excel"><h3>FR-E-01 区域编辑与清理 <span class="tag">P0</span></h3><p>用户可批量插入行列、横纵复制、转换文本/数值/日期、添加前后缀、删除不可见字符、空白行列和重复项。默认只处理显式选区；重复处理需定义比较列、首项保留和大小写规则，含公式或有效格式的行列不能被“看似为空”误删。</p><div class="ids">E-EDIT-001、E-EDIT-002、E-DEL-001、E-DEL-002</div></article>
+<article class="req" data-host="excel"><h3>FR-E-02 汇总、拆分与工资条 <span class="tag">P0</span></h3><p>汇总前检查表头和字段类型，保留来源工作表信息；拆分支持复制型与剔除型，清洗无效工作表名并处理重名冲突；工资条按每位数据行复制标题和间隔。所有结果写入新工作表或新文件，原数据区域保持不变。</p><div class="ids">E-MERGE-001、E-SPLIT-002、E-PAY-001</div></article>
+<article class="req" data-host="excel"><h3>FR-E-03 数据对比与排序 <span class="tag">P0</span></h3><p>数据对比按用户选择的键列出新增、缺失和不同项，可追溯到原行；数值比较允许明确容差。排序支持多键和稳定次序，颜色及合并单元格变体按同一模型扩展；无法安全处理合并区域时先阻塞而非破坏数据。</p><div class="ids">E-CMP-001、E-SORT-001</div></article>
+<article class="req" data-host="powerpoint"><h3>FR-P-01 页面与效果清理 <span class="tag">P0</span></h3><p>用户可按选中页或全稿删除空白页、隐藏页、动画和切换。空白页判定须忽略背景、母版和备注，不得把仅有备注的页面自动视为空白；隐藏页删除前列出页码并确认。清理动画不得删除形状或文本。</p><div class="ids">P-CLEAN-001、P-CLEAN-002</div></article>
+<article class="req" data-host="powerpoint"><h3>FR-P-02 配色、形状与图片导出 <span class="tag">P0</span></h3><p>原创配色只映射文本、背景和形状颜色，不重新着色图片。形状支持尺寸变化、横向/纵向对齐及翻转，组合对象作为整体处理。图片导出允许页码范围、格式和分辨率，输出重名时遵循统一冲突规则。</p><div class="ids">P-DESIGN-001、P-SHAPE-001、P-DOC-003</div></article>
+</section>
+<section id="p1">
+<h2>05 P1/P2 扩展功能需求</h2>
+<p>扩展能力沿用统一预检、原件保护、撤销/备份和结果规则。下表按用户任务归并，完整变体以矩阵功能 ID 为准。</p>
+<table><thead><tr><th>任务模块</th><th>功能 ID</th><th>可观察行为与边界</th></tr></thead><tbody>
+<tr><td>Word 页面与样式扩展</td><td>W-PAGE-003/005/006/009；W-STYLE-004～010</td><td>信函格式、A3 转 A4、页码重设、分隔符、模板样式、编号、字体、段落和孤行处理；先预览影响范围，无法可靠判定的段落进入跳过清单。</td></tr>
+<tr><td>Word 文本扩展</td><td>W-TEXT-004～013</td><td>空白页、标点、金额、简繁、正则、合并段落、高亮、纠错、缩进和 Markdown；简繁依赖合法词库，正则必须可超时取消，未公开纠错规则标记 [TBD]。</td></tr>
+<tr><td>Word 文档与部件</td><td>W-PART-003/005；W-DOC-001～011</td><td>落款印章版记、目录书签、拆分合并、比较、导出、OFD 转换、PDF 导入、压缩、水印、批替换、归档打印和取值；OFD 转换器未配置时明确阻塞。</td></tr>
+<tr><td>图片、表格与标签</td><td>W-IMG-001～004；W-TBL-001～005；W-LABEL-001</td><td>图片提取/统一/切片/SVG，表格选择/清理/计算/导出，档案标签和座牌批量生成；合并单元格或缺字等不可处理项不得静默跳过。</td></tr>
+<tr><td>教学工具</td><td>W-EDU-001～006</td><td>口算、选项、填空、拼音、格纸、关系括号、笔顺、化学方程式和仿手写；使用合法数据及字体，规则或数据缺失时只阻塞对应能力。</td></tr>
+<tr><td>Excel 数据工具</td><td>E-EDIT-003/004；E-MERGE-002；E-SPLIT-001/003；E-FIN-001/002</td><td>正则、转置、合并、拆分、筛选、财务和凑数；算法允许取消并报告无解/多解，不以浮点误差替代明确的金额精度规则。</td></tr>
+<tr><td>身份证与随机资料</td><td>E-ID-001/002；E-RAND-001</td><td>校验码、生日、性别、年龄和脱敏可在本地执行；归属地依赖合法区划数据。随机资料只作为模拟数据，含义不明项目保持待核实。</td></tr>
+<tr><td>Excel 可视化与业务</td><td>E-VIS-001/002；E-NAV-001；E-PRINT-001；E-QR-001；E-IMG-001；E-EDU-001/002；E-SEARCH-001</td><td>聚光灯、填色、甘特图、导航、套打、二维码、成绩统计、快查快录等；关闭视觉效果后恢复用户原样式，统计需明确缺考、零分和排名口径。</td></tr>
+<tr><td>PowerPoint 扩展</td><td>P-CLEAN-003；P-DESIGN-002；P-SHAPE-002/003；P-DOC-001/002/004/005；P-PLAY-001；P-FONT-001</td><td>母版、特效、形状过渡、样机、追加、资源备注、长图、网页、倒计时和字体元数据；字体模块不输出未经可靠数据支持的法律结论。</td></tr>
+<tr><td>原生窗口标签</td><td>DOC-004～010 <span class="tag p2">P2</span></td><td>快捷键、单窗口标签、拖拽分组、重命名、外观、多窗口合并和右键菜单；未通过稳定性验证前保留侧栏并标记未完成。</td></tr>
+<tr><td>本地知识与模板</td><td>COM-003～005</td><td>原创模板、宏/代码收藏与灵感收集；外部代码默认不自动执行，导入内容需要用户审阅。</td></tr>
+</tbody></table>
+</section>
+<section id="connected">
+<h2>06 安全与连接型功能</h2>
+<h3>FR-SEC-01 授权内安全操作</h3>
+<p>文档加密、正常解密、保护设置与有效凭据解除（W-SEC-001/002）只调用宿主正常流程。密码错误、权限不足或文件损坏时保留原状态，不反复自动尝试。破解、绕过和受保护内容克隆（W-SEC-003）为排除项。</p>
+<h3>FR-AI-01 用户自备在线服务</h3>
+<p>AI 写作/助手（AI-001）、OCR（AI-002）、翻译（AI-003）、提示词模板（AI-004）、发票读取（E-INVOICE-001）和朗读/转音频（P-PLAY-002）仅在连接配置有效后可用。发起前显示服务提供方、文本或图片范围及目标语言/声音等参数；支持取消、超时和服务错误提示，不把失败包装为成功。</p>
+<h3>FR-NET-01 分发、消息与互动</h3>
+<p>数据查询页（E-DIST-001）默认最小化公开字段，并要求访问控制；邮件或消息群发（E-COMM-001）提供预览、收件人授权确认、限流和逐项结果；手机遥控与弹幕（P-PLAY-003）采用配对授权、过期和断线重连。相关配套 Web 服务单独发布，不与桌面插件安装包混为一项。</p>
+</section>
+<section id="exceptions">
+<h2>07 异常、空状态与恢复</h2>
+<table><thead><tr><th>场景</th><th>产品行为</th><th>用户恢复路径</th></tr></thead><tbody>
+<tr><td>无文档或空选区</td><td>说明当前命令需要的文档/范围；不因空选区默认处理整份文档。</td><td>打开文档或选择范围后重试；提供明确的全文处理入口。</td></tr>
+<tr><td>保护、只读或权限不足</td><td>停止修改，显示具体范围；不尝试绕过。</td><td>提供有效凭据、请求权限或另存为用户有权编辑的副本。</td></tr>
+<tr><td>依赖未配置</td><td>命令保留可见，显示缺失的转换器、词库、运行时或服务。</td><td>打开对应设置；验证连接后重试，不影响其他本地功能。</td></tr>
+<tr><td>输出冲突或磁盘失败</td><td>不覆盖原文件；记录失败项，已成功项保留。</td><td>更换目录/文件名、释放空间后仅重试失败项。</td></tr>
+<tr><td>执行中取消</td><td>停止新项，状态改为已取消，展示当前已生成和未处理内容。</td><td>根据清单继续未处理项，避免重复覆盖。</td></tr>
+<tr><td>部分成功</td><td>明确区分成功、跳过和失败；成功项可检查，失败项含原因。</td><td>导出结果清单或筛选失败项重试。</td></tr>
+<tr><td>在线内容风险</td><td>网页不执行未授权脚本；外部代码收藏默认不运行；日志不包含正文和密钥。</td><td>撤销授权、删除连接或改用本地能力。</td></tr>
+</tbody></table>
+</section>
+<section id="open">
+<h2>08 待确认事项</h2>
+<ul>
+<li><strong>[TBD]</strong> 正式产品名称、图标和原创视觉规范；当前“办公增效套件”仅为工作名。</li>
+<li><strong>[TBD]</strong> 方方格子“图片专题工具”等仅公开分类名称的子功能，以及不坑盒子“详情统计、随身资料、简易分班”等业务规则，见矩阵“待核实”行。</li>
+<li><strong>[TBD]</strong> OFD 转换器、简繁/拼音/笔画/区划数据源、OCR/翻译/AI/TTS 提供方及各自许可；未选定前不伪造功能可用。</li>
+<li><strong>[Assumption, TBD]</strong> 公文默认模板以 GB/T 9704—2012 的公开样张核验为基础；不同单位的专用红头、版记和字体规范由用户模板扩展，不宣称未经验证的完全合规。</li>
+</ul>
+</section>
+</main>
+</div>
+<div class="footer">办公增效套件 · PRD 1.0 · 功能范围以 PublicFeatureMatrix.csv 为准</div>
+<script>
+(function(){
+  const docs=[{name:'请示样例.docx',saved:false,color:'#7a5af8'},{name:'会议纪要.docx',saved:true,color:'#12b76a'},{name:'年度总结.docx',saved:false,color:'#f79009'}];let active=0;
+  const list=document.getElementById('docList'),feedback=document.getElementById('docFeedback');
+  function render(filter){const q=(filter||'').trim().toLowerCase();list.innerHTML='';docs.forEach((d,i)=>{if(q&&!d.name.toLowerCase().includes(q)&&!('保存关闭切换页面'.includes(q)))return;const b=document.createElement('button');b.type='button';b.className='doc-item'+(i===active?' active':'');b.innerHTML='<span class="dot" style="background:'+d.color+'"></span><span>'+d.name+(d.saved?'':' *')+'</span>';b.onclick=()=>{active=i;feedback.textContent='已切换到 '+d.name;render(document.getElementById('commandSearch').value);update();};list.appendChild(b)});if(!list.children.length)list.innerHTML='<small>没有匹配的文档或命令</small>';}
+  function update(){if(!docs.length){document.getElementById('docTitle').textContent='无打开文档';document.getElementById('docState').textContent='空状态';return}const d=docs[active];document.getElementById('docTitle').textContent=d.name;document.getElementById('docState').textContent=(d.saved?'已保存':'已修改')+' · 颜色标记';}
+  document.getElementById('commandSearch').oninput=e=>render(e.target.value);
+  document.getElementById('saveAll').onclick=()=>{docs.forEach(d=>d.saved=true);feedback.textContent='演示：全部文档已保存';render(document.getElementById('commandSearch').value);update();};
+  document.getElementById('closeAll').onclick=()=>{const n=docs.filter(d=>!d.saved).length;if(n&&!window.confirm('演示：'+n+' 个文档未保存。仅演示关闭流程，是否继续？'))return;docs.length=0;feedback.textContent='演示：文档已关闭，真实产品会逐项确认未保存文档';active=0;render();update();};render();update();
+  document.querySelectorAll('.filters button').forEach(b=>b.onclick=()=>{document.querySelectorAll('.filters button').forEach(x=>x.classList.remove('active'));b.classList.add('active');document.querySelectorAll('#p0 [data-host]').forEach(x=>x.hidden=b.dataset.filter!=='all'&&x.dataset.host!==b.dataset.filter);});
+  const out=document.getElementById('batchOut');document.getElementById('runBatch').onclick=()=>{out.textContent='预检完成\n✓ 文件 A：可处理\n✓ 文件 B：可处理\n! 文件 C：缺少有效凭据，已阻止该项\n输出策略：另存；不会覆盖原文件。';};document.getElementById('cancelBatch').onclick=()=>{out.textContent='已取消\n成功：1 项（输出已保留）\n未处理：1 项\n失败：1 项（缺少有效凭据）\n可仅重试失败项。';};
+})();
+</script>
+</body>
+</html>

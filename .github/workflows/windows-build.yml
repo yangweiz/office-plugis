@@ -1,0 +1,114 @@
+name: Windows build and verification
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  static:
+    name: Static verification
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run static checks
+        run: python3 scripts/verify-static.py
+
+  build:
+    name: Build, test and package (${{ matrix.platform }})
+    runs-on: windows-2022
+    needs: static
+    strategy:
+      fail-fast: false
+      matrix:
+        platform: [ x64, x86 ]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Add MSBuild to PATH
+        uses: microsoft/setup-msbuild@v2
+
+      - name: Locate Visual Studio 2022
+        id: vs
+        shell: powershell
+        run: |
+          $vswhere = "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\vswhere.exe"
+          if (-not (Test-Path $vswhere -PathType Leaf)) {
+            throw "vswhere.exe was not found on this runner."
+          }
+          $installPath = & $vswhere -version "[17.0,18.0)" -latest -products * -property installationPath | Select-Object -First 1
+          if ([string]::IsNullOrWhiteSpace([string]$installPath)) {
+            throw "Visual Studio 2022 was not found."
+          }
+          "installPath=$installPath" >> $env:GITHUB_OUTPUT
+
+      - name: Ensure VSTO build support
+        shell: powershell
+        run: |
+          $installPath = "${{ steps.vs.outputs.installPath }}"
+          $targets = Join-Path $installPath "MSBuild\Microsoft\VisualStudio\v17.0\OfficeTools\Microsoft.VisualStudio.OfficeTools.targets"
+          if (-not (Test-Path $targets -PathType Leaf)) {
+            Write-Host "OfficeTools targets are missing; adding the Office/SharePoint development workload."
+            $installer = "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\vs_installer.exe"
+            if (-not (Test-Path $installer -PathType Leaf)) {
+              throw "vs_installer.exe was not found."
+            }
+            $arguments = @(
+              "modify",
+              "--installPath", ('"' + $installPath + '"'),
+              "--add", "Microsoft.VisualStudio.Workload.Office",
+              "--quiet", "--norestart", "--nocache"
+            )
+            $process = Start-Process -FilePath $installer -ArgumentList $arguments -Wait -PassThru
+            if ($process.ExitCode -ne 0 -and $process.ExitCode -ne 3010) {
+              throw "vs_installer.exe failed with exit code $($process.ExitCode)."
+            }
+          }
+          if (-not (Test-Path $targets -PathType Leaf)) {
+            throw "VSTO build targets are still unavailable. Use a self-hosted Windows runner with the Office/SharePoint development workload installed."
+          }
+          Write-Host "VSTO targets found: $targets"
+
+      - name: Install WiX Toolset 3.x
+        shell: powershell
+        run: |
+          choco install wixtoolset -y --no-progress
+          $root = Get-ChildItem -Path ${env:ProgramFiles(x86)} -Directory -Filter "WiX Toolset v3.*" -ErrorAction SilentlyContinue |
+            Sort-Object -Property Name -Descending |
+            Select-Object -First 1
+          if (-not $root) {
+            throw "WiX Toolset 3.x was not found under Program Files (x86)."
+          }
+          $candle = Join-Path $root.FullName "bin\candle.exe"
+          if (-not (Test-Path $candle -PathType Leaf)) {
+            throw "candle.exe was not found in $($root.FullName)\bin."
+          }
+          "WIX=$($root.FullName)" >> $env:GITHUB_ENV
+
+      - name: Build, test and package
+        shell: powershell
+        run: |
+          .\scripts\verify-windows.ps1 -Platform ${{ matrix.platform }}
+
+      - name: Upload MSI
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: msi-${{ matrix.platform }}
+          path: installer/Suite.Installer/bin/Release/${{ matrix.platform }}/*.msi
+          if-no-files-found: warn
+
+      - name: Upload verification log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: verification-log-${{ matrix.platform }}
+          path: artifacts/*.log
+          if-no-files-found: warn

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<customUI xmlns="http://schemas.microsoft.com/office/2006/01/customui">
+  <ribbon>
+    <tabs>
+      <tab id="suiteExcelTab" label="办公增效">
+        <group id="suiteCommonGroup" label="通用">
+          <editBox id="suiteSearchText" label="关键词" sizeString="AAAAAAAAAAAA" maxLength="50" onChange="OnSearchChanged" screentip="按功能名称、标识或关键词查找" />
+          <button id="suiteSearch" label="搜索功能" onAction="OnSearch" />
+          <button id="suiteDocuments" label="文档管理" onAction="OnDocuments" />
+          <button id="suiteSettings" label="设置" onAction="OnSettings" />
+          <button id="suiteAbout" label="帮助与版本" onAction="OnAbout" />
+          <button id="suiteNativeTabs" label="原生标签状态" onAction="OnNativeTabs" />
+        </group>
+        <group id="suiteCleanGroup" label="文本与行">
+          <button id="suiteCleanText" label="清理选区文本" tag="E-DEL-001-TEXT" onAction="OnRibbonAction" screentip="仅处理文本常量，数字、日期与公式保持不变" />
+          <button id="suiteRemoveBlankRows" label="删除空行" tag="E-DEL-001-BLANK" onAction="OnRibbonAction" screentip="检查活动工作表的已用区域，含公式时阻止处理" />
+          <button id="suiteDistinctRows" label="选区去重" tag="E-DEL-002-ROWS" onAction="OnRibbonAction" screentip="按整行内容忽略大小写并修剪空白后去重，保留第一行" />
+          <button id="suiteSortSelection" label="选区排序" tag="E-SORT-001-FIRST" onAction="OnRibbonAction" screentip="按选区首列升序排列数据行" />
+        </group>
+        <group id="suiteTableGroup" label="表格处理">
+          <button id="suiteCompare" label="按键列对比" tag="E-CMP-001-KEY" onAction="OnRibbonAction" screentip="比较两个区域并以文本快照输出到新工作表" />
+          <button id="suiteSummarize" label="多表汇总" tag="E-MERGE-001-SHEETS" onAction="OnRibbonAction" screentip="汇总当前工作簿中的源工作表并按原始值写入，不复制原格式" />
+          <button id="suiteSplit" label="按列拆分" tag="E-SPLIT-002-COLUMN" onAction="OnRibbonAction" screentip="按原始值写入，不复制原格式，保存为不覆盖源文件的新工作簿" />
+          <button id="suiteGroupSum" label="分组求和" tag="E-MERGE-001-GROUPSUM" onAction="OnRibbonAction" screentip="选区首行为表头，按键列分组并对数值列求和，结果写入新工作表" />
+          <button id="suitePayroll" label="生成工资条" tag="E-PAY-001" onAction="OnRibbonAction" screentip="选区首行作为表头，结果写入新工作表并按原始值写入，不复制原格式" />
+        </group>
+        <group id="suiteEducationGroup" label="成绩分析">
+          <button id="suiteGradeSummary" label="成绩统计" tag="E-EDU-001-SUMMARY" onAction="OnRibbonAction" screentip="仅选择分数单元格；空白跳过，非空文本或越界值阻塞。输出统计指标和五个等距分数段" />
+        </group>
+        <group id="suiteIdentityGroup" label="身份证处理">
+          <button id="suiteValidateIds" label="校验选区" tag="E-ID-001-VALIDATE" onAction="OnRibbonAction" screentip="仅检查文本常量，不转换数字单元格" />
+          <button id="suiteMaskIds" label="脱敏选区" tag="E-ID-002-MASK" onAction="OnRibbonAction" screentip="脱敏有效身份证文本，无效值保持不变" />
+        </group>
+      </tab>
+    </tabs>
+  </ribbon>
+</customUI>

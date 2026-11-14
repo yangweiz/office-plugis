@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?ifndef Configuration ?>
+<?define Configuration = "Release" ?>
+<?endif ?>
+<?ifndef Platform ?>
+<?define Platform = "x64" ?>
+<?endif ?>
+<?ifndef ProductVersion ?>
+<?define ProductVersion = "1.0.0" ?>
+<?endif ?>
+<?ifndef SuiteSourceDir ?>
+<?define SuiteSourceDir = "..\..\src" ?>
+<?endif ?>
+<?if $(var.Platform) = "x64" ?>
+<?define Win64 = "yes" ?>
+<?else ?>
+<?if $(var.Platform) = "x86" ?>
+<?define Win64 = "no" ?>
+<?else ?>
+<?error Platform must be x86 or x64. ?>
+<?endif ?>
+<?endif ?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Product Id="*"
+           Name="Office Productivity Suite"
+           Language="2052"
+           Version="$(var.ProductVersion)"
+           Manufacturer="Office Productivity Suite"
+           UpgradeCode="{C97D129A-62D3-4D18-A26F-E82B7D6D94C1}">
+    <Package InstallerVersion="500"
+             Compressed="yes"
+             InstallScope="perUser"
+             InstallPrivileges="limited"
+             Platform="$(var.Platform)"
+             Description="Office Productivity Suite VSTO add-ins"
+             Comments="Installs per-user files and add-in registration only." />
+    <MajorUpgrade Schedule="afterInstallInitialize"
+                  AllowSameVersionUpgrades="no"
+                  DowngradeErrorMessage="已安装更新版本；请先使用当前版本，或卸载更新版本后再安装。" />
+    <Media Id="1" Cabinet="Suite.cab" EmbedCab="yes" />
+
+    <Property Id="NETFRAMEWORK48RELEASE">
+      <RegistrySearch Id="NetFramework48Search"
+                      Root="HKLM"
+                      Key="SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full"
+                      Name="Release"
+                      Type="raw"
+                      Win64="$(var.Win64)" />
+    </Property>
+    <Property Id="VSTORUNTIMEVERSION">
+      <RegistrySearch Id="VstoRuntimeSearch"
+                      Root="HKLM"
+                      Key="SOFTWARE\Microsoft\VSTO Runtime Setup\v4R"
+                      Name="Version"
+                      Type="raw"
+                      Win64="$(var.Win64)" />
+    </Property>
+    <Condition Message="需要 Microsoft .NET Framework 4.8 或更高版本。请由管理员安装该运行库后重新运行安装程序。">
+      <![CDATA[Installed OR (NETFRAMEWORK48RELEASE >= "#528040")]]>
+    </Condition>
+    <Condition Message="需要与 Office 位数一致的 Microsoft Visual Studio 2010 Tools for Office Runtime。请由管理员安装该运行库后重试。">
+      <![CDATA[Installed OR VSTORUNTIMEVERSION]]>
+    </Condition>
+
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="LocalAppDataFolder">
+        <Directory Id="INSTALLDIR" Name="OfficeProductivitySuite">
+          <Component Id="SuiteCoreAssembly" Guid="{B3DC2F9A-90F4-4C67-81D2-0575B72A1201}" Win64="$(var.Win64)">
+            <File Id="SuiteCoreDll"
+                  Name="Suite.Core.dll"
+                  Source="$(var.SuiteSourceDir)\Suite.Core\bin\$(var.Configuration)\Suite.Core.dll"
+                  KeyPath="yes" />
+          </Component>
+          <Component Id="SuiteInfrastructureAssembly" Guid="{64D9A40D-CB57-4F08-B38D-0575B72A1202}" Win64="$(var.Win64)">
+            <File Id="SuiteInfrastructureDll"
+                  Name="Suite.Infrastructure.dll"
+                  Source="$(var.SuiteSourceDir)\Suite.Infrastructure\bin\$(var.Configuration)\Suite.Infrastructure.dll"
+                  KeyPath="yes" />
+          </Component>
+          <Component Id="SuiteWindowingAssembly" Guid="{D7A6A17C-F569-4E72-B7C4-0575B72A1203}" Win64="$(var.Win64)">
+            <File Id="SuiteWindowingDll"
+                  Name="Suite.Windowing.dll"
+                  Source="$(var.SuiteSourceDir)\Suite.Windowing\bin\$(var.Configuration)\Suite.Windowing.dll"
+                  KeyPath="yes" />
+          </Component>
+
+          <Component Id="WordAssembly" Guid="{A6D792E8-48A5-4F8B-90BC-0575B72A1211}" Win64="$(var.Win64)">
+            <File Id="WordDll"
+                  Name="Suite.Word.dll"
+                  Source="$(var.SuiteSourceDir)\Suite.Word\bin\$(var.Configuration)\Suite.Word.dll"
+                  KeyPath="yes" />
+          </Component>
+          <Component Id="WordDeploymentManifest" Guid="{BC7C2541-9804-40D3-999A-0575B72A1212}" Win64="$(var.Win64)">
+            <File Id="WordVsto"
+                  Name="Suite.Word.vsto"
+                  Source="$(var.SuiteSourceDir)\Suite.Word\bin\$(var.Configuration)\Suite.Word.vsto"
+                  KeyPath="yes" />
+          </Component>
+          <Component Id="WordApplicationManifest" Guid="{E76AE7F4-BB5C-4889-99F2-0575B72A1213}" Win64="$(var.Win64)">
+            <File Id="WordManifest"
+                  Name="Suite.Word.dll.manifest"
+                  Source="$(var.SuiteSourceDir)\Suite.Word\bin\$(var.Configuration)\Suite.Word.dll.manifest"
+                  KeyPath="yes" />
+          </Component>
+          <Component Id="WordAddinRegistration" Guid="{8C125BA3-0440-4C55-9E5D-0575B72A1214}" Win64="$(var.Win64)">
+            <RegistryValue Root="HKCU" Key="Software\Microsoft\Office\Word\Addins\Suite.Word" Name="Description" Type="string" Value="Office Productivity Suite for Word" />
+            <RegistryValue Root="HKCU" Key="Software\Microsoft\Office\Word\Addins\Suite.Word" Name="FriendlyName" Type="string" Value="Office Productivity Suite - Word" />
+            <RegistryValue Root="HKCU" Key="Software\Microsoft\Office\Word\Addins\Suite.Word" Name="LoadBehavior" Type="integer" Value="3" />
+            <RegistryValue Root="HKCU" Key="Software\Microsoft\Office\Word\Addins\Suite.Word" Name="Manifest" Type="string" Value="file:///[INSTALLDIR]Suite.Word.vsto" KeyPath="yes" />
+          </Component>
+
+          <Component Id="ExcelAssembly" Guid="{710E0E19-C1A6-45FC-8B94-0575B72A1221}" Win64="$(var.Win64)">
+            <File Id="ExcelDll"
+                  Name="Suite.Excel.dll"
+                  Source="$(var.SuiteSourceDir)\Suite.Excel\bin\$(var.Configuration)\Suite.Excel.dll"
+                  KeyPath="yes" />
+          </Component>
+          <Component Id="ExcelDeploymentManifest" Guid="{D50C6673-C26C-4DC6-8E39-0575B72A1222}" Win64="$(var.Win64)">
+            <File Id="ExcelVsto"
+                  Name="Suite.Excel.vsto"
+                  Source="$(var.SuiteSourceDir)\Suite.Excel\bin\$(var.Configuration)\Suite.Excel.vsto"
+                  KeyPath="yes" />
+          </Component>
+          <Component Id="ExcelApplicationManifest" Guid="{46E760C8-4972-445E-ACD4-0575B72A1223}" Win64="$(var.Win64)">
+            <File Id="ExcelManifest"
+                  Name="Suite.Excel.dll.manifest"
+                  Source="$(var.SuiteSourceDir)\Suite.Excel\bin\$(var.Configuration)\Suite.Excel.dll.manifest"
+                  KeyPath="yes" />
+          </Component>
+          <Component Id="ExcelAddinRegistration" Guid="{0A583A38-9E33-4AA1-BF1E-0575B72A1224}" Win64="$(var.Win64)">
+            <RegistryValue Root="HKCU" Key="Software\Microsoft\Office\Excel\Addins\Suite.Excel" Name="Description" Type="string" Value="Office Productivity Suite for Excel" />
+            <RegistryValue Root="HKCU" Key="Software\Microsoft\Office\Excel\Addins\Suite.Excel" Name="FriendlyName" Type="string" Value="Office Productivity Suite - Excel" />
+            <RegistryValue Root="HKCU" Key="Software\Microsoft\Office\Excel\Addins\Suite.Excel" Name="LoadBehavior" Type="integer" Value="3" />
+            <RegistryValue Root="HKCU" Key="Software\Microsoft\Office\Excel\Addins\Suite.Excel" Name="Manifest" Type="string" Value="file:///[INSTALLDIR]Suite.Excel.vsto" KeyPath="yes" />
+          </Component>
+
+          <Component Id="PowerPointAssembly" Guid="{8E240D15-6B23-4B74-813B-0575B72A1231}" Win64="$(var.Win64)">
+            <File Id="PowerPointDll"
+                  Name="Suite.PowerPoint.dll"
+                  Source="$(var.SuiteSourceDir)\Suite.PowerPoint\bin\$(var.Configuration)\Suite.PowerPoint.dll"
+                  KeyPath="yes" />
+          </Component>
+          <Component Id="PowerPointDeploymentManifest" Guid="{46047852-FB35-47A9-A74C-0575B72A1232}" Win64="$(var.Win64)">
+            <File Id="PowerPointVsto"
+                  Name="Suite.PowerPoint.vsto"
+                  Source="$(var.SuiteSourceDir)\Suite.PowerPoint\bin\$(var.Configuration)\Suite.PowerPoint.vsto"
+                  KeyPath="yes" />
+          </Component>
+          <Component Id="PowerPointApplicationManifest" Guid="{CA3D7D6E-235D-4C5E-85BC-0575B72A1233}" Win64="$(var.Win64)">
+            <File Id="PowerPointManifest"
+                  Name="Suite.PowerPoint.dll.manifest"
+                  Source="$(var.SuiteSourceDir)\Suite.PowerPoint\bin\$(var.Configuration)\Suite.PowerPoint.dll.manifest"
+                  KeyPath="yes" />
+          </Component>
+          <Component Id="PowerPointAddinRegistration" Guid="{F3C72A1A-139A-4AF7-9CB1-0575B72A1234}" Win64="$(var.Win64)">
+            <RegistryValue Root="HKCU" Key="Software\Microsoft\Office\PowerPoint\Addins\Suite.PowerPoint" Name="Description" Type="string" Value="Office Productivity Suite for PowerPoint" />
+            <RegistryValue Root="HKCU" Key="Software\Microsoft\Office\PowerPoint\Addins\Suite.PowerPoint" Name="FriendlyName" Type="string" Value="Office Productivity Suite - PowerPoint" />
+            <RegistryValue Root="HKCU" Key="Software\Microsoft\Office\PowerPoint\Addins\Suite.PowerPoint" Name="LoadBehavior" Type="integer" Value="3" />
+            <RegistryValue Root="HKCU" Key="Software\Microsoft\Office\PowerPoint\Addins\Suite.PowerPoint" Name="Manifest" Type="string" Value="file:///[INSTALLDIR]Suite.PowerPoint.vsto" KeyPath="yes" />
+          </Component>
+        </Directory>
+      </Directory>
+    </Directory>
+
+    <Feature Id="Complete" Title="Office Productivity Suite" Level="1">
+      <ComponentRef Id="SuiteCoreAssembly" />
+      <ComponentRef Id="SuiteInfrastructureAssembly" />
+      <ComponentRef Id="SuiteWindowingAssembly" />
+      <ComponentRef Id="WordAssembly" />
+      <ComponentRef Id="WordDeploymentManifest" />
+      <ComponentRef Id="WordApplicationManifest" />
+      <ComponentRef Id="WordAddinRegistration" />
+      <ComponentRef Id="ExcelAssembly" />
+      <ComponentRef Id="ExcelDeploymentManifest" />
+      <ComponentRef Id="ExcelApplicationManifest" />
+      <ComponentRef Id="ExcelAddinRegistration" />
+      <ComponentRef Id="PowerPointAssembly" />
+      <ComponentRef Id="PowerPointDeploymentManifest" />
+      <ComponentRef Id="PowerPointApplicationManifest" />
+      <ComponentRef Id="PowerPointAddinRegistration" />
+    </Feature>
+  </Product>
+</Wix>

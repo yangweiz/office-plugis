@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<customUI xmlns="http://schemas.microsoft.com/office/2009/07/customui">
+  <ribbon>
+    <tabs>
+      <tab id="SuiteTab" label="办公增效">
+        <group id="SuiteCommon" label="通用">
+          <editBox id="SuiteSearchText" label="功能搜索" sizeString="十二个汉字宽度" onChange="OnSearchChanged" />
+          <button id="SuiteSearch" label="查找并执行" imageMso="FindDialog" onAction="OnSearch" />
+          <button id="SuiteDocuments" label="文档管理" imageMso="WindowSwitchWindowsMenu" onAction="OnDocuments" />
+          <button id="SuiteNativeTabs" label="原生标签状态" imageMso="WindowNew" onAction="OnNativeTabs" />
+          <button id="SuiteSettings" label="设置" imageMso="ComAddInsDialog" onAction="OnSettings" />
+          <button id="SuiteAbout" label="帮助与版本" imageMso="Help" onAction="OnAbout" />
+        </group>
+        <group id="SuitePage" label="公文页面">
+          <button id="PageOfficial" tag="W-PAGE-001" label="公文页面" imageMso="PageSetupDialog" onAction="OnCommand" />
+          <button id="PageGrid" tag="W-PAGE-002" label="22 行 28 字" imageMso="TableGrid" onAction="OnCommand" />
+          <button id="PageLandscape" tag="W-PAGE-004" label="当前页转横页" imageMso="PageOrientationLandscape" onAction="OnCommand" />
+          <button id="PageNumbers" tag="W-PAGE-007" label="插入页码" imageMso="PageNumberInsert" onAction="OnCommand" />
+          <button id="ClearHeaders" tag="W-PAGE-008" label="清理页眉页脚" imageMso="HeaderFooterRemoveHeaderWord" onAction="OnCommand" />
+        </group>
+        <group id="SuiteStyles" label="正文与标题">
+          <button id="StyleBody" tag="W-STYLE-001" label="正文样式" imageMso="StylesDialog" onAction="OnCommand" />
+          <button id="StyleAuto" tag="W-STYLE-002" label="自动排版" imageMso="FormatPainter" onAction="OnCommand" />
+          <button id="StylePromote" tag="W-STYLE-003" label="标题提级" imageMso="OutlinePromote" onAction="OnCommand" />
+        </group>
+        <group id="SuiteText" label="文本清理">
+          <button id="TextReflow" tag="W-TEXT-001" label="断行重排" imageMso="TextWrappingMenu" onAction="OnCommand" />
+          <button id="TextWhitespace" tag="W-TEXT-002" label="清理空白与不可见字符" imageMso="ClearFormatting" onAction="OnCommand" />
+          <button id="TextHyperlinks" tag="W-TEXT-003" label="清理超链接与直接格式" imageMso="HyperlinkDelete" onAction="OnCommand" />
+          <button id="TextPunctuationChinese" tag="W-TEXT-005-CN" label="标点转中文" imageMso="Translate" onAction="OnCommand" />
+          <button id="TextPunctuationEnglish" tag="W-TEXT-005-EN" label="标点转英文" imageMso="Translate" onAction="OnCommand" />
+          <button id="TextFullWidth" tag="W-TEXT-005-FULL" label="半角转全角" imageMso="FullWidth" onAction="OnCommand" />
+          <button id="TextHalfWidth" tag="W-TEXT-005-HALF" label="全角转半角" imageMso="HalfWidth" onAction="OnCommand" />
+        </group>
+        <group id="SuiteParts" label="公文部件">
+          <button id="PartRedHead" tag="W-PART-001" label="文字红头与红线" imageMso="RedactionMark" onAction="OnCommand" />
+          <button id="PartDate" tag="W-PART-004" label="插入公文日期" imageMso="DateAndTimeInsert" onAction="OnCommand" />
+        </group>
+        <group id="SuiteDocumentsBatch" label="文档批处理">
+          <button id="DocumentMerge" tag="W-DOC-001-MERGE" label="合并 Word 文档" imageMso="CombineDocuments" onAction="OnCommand" />
+          <button id="DocumentSplitHeading" tag="W-DOC-001-SPLIT-H1" label="按一级标题拆分" imageMso="SplitCells" onAction="OnCommand" />
+          <button id="DocumentExportPdf" tag="W-DOC-003-PDF" label="导出 PDF" imageMso="FileSaveAsPdfOrXps" onAction="OnCommand" />
+        </group>
+        <group id="SuiteTablesLabels" label="表格与标签">
+          <button id="TableFitWindow" tag="W-TBL-001-FIT" label="表格适应窗口" imageMso="TableAutoFitWindow" onAction="OnCommand" />
+          <button id="TableDistributeRows" tag="W-TBL-001-ROWS" label="均分行" imageMso="TableRowsDistribute" onAction="OnCommand" />
+          <button id="TableDistributeColumns" tag="W-TBL-001-COLS" label="均分列" imageMso="TableColumnsDistribute" onAction="OnCommand" />
+          <button id="CreateSeatLabels" tag="W-LABEL-001-SEAT" label="批量生成桌签" imageMso="TableInsert" onAction="OnCommand" />
+        </group>
+      </tab>
+    </tabs>
+  </ribbon>
+</customUI>
