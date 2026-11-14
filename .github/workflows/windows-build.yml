@@ -52,9 +52,31 @@ jobs:
       - name: Ensure VSTO build support
         shell: powershell
         run: |
+          function Find-VstoTargets {
+            param([Parameter(Mandatory = $true)][string]$InstallPath)
+
+            $direct = Join-Path $InstallPath "MSBuild\Microsoft\VisualStudio\v17.0\OfficeTools\Microsoft.VisualStudio.OfficeTools.targets"
+            if (Test-Path $direct -PathType Leaf) {
+              return $direct
+            }
+
+            $root = Join-Path $InstallPath "MSBuild\Microsoft\VisualStudio"
+            if (-not (Test-Path $root -PathType Container)) {
+              return $null
+            }
+            $candidate = Get-ChildItem -Path $root -Directory -ErrorAction SilentlyContinue |
+              Sort-Object -Property Name -Descending |
+              ForEach-Object {
+                $path = Join-Path $_.FullName "OfficeTools\Microsoft.VisualStudio.OfficeTools.targets"
+                if (Test-Path $path -PathType Leaf) { $path }
+              } |
+              Select-Object -First 1
+            return $candidate
+          }
+
           $installPath = "${{ steps.vs.outputs.installPath }}"
-          $targets = Join-Path $installPath "MSBuild\Microsoft\VisualStudio\v17.0\OfficeTools\Microsoft.VisualStudio.OfficeTools.targets"
-          if (-not (Test-Path $targets -PathType Leaf)) {
+          $targets = Find-VstoTargets -InstallPath $installPath
+          if (-not $targets) {
             Write-Host "OfficeTools targets are missing; adding the Office/SharePoint development workload."
             $installer = "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\vs_installer.exe"
             if (-not (Test-Path $installer -PathType Leaf)) {
@@ -64,14 +86,23 @@ jobs:
               "modify",
               "--installPath", ('"' + $installPath + '"'),
               "--add", "Microsoft.VisualStudio.Workload.Office",
+              "--includeRecommended",
               "--quiet", "--norestart", "--nocache"
             )
             $process = Start-Process -FilePath $installer -ArgumentList $arguments -Wait -PassThru
+            Write-Host "vs_installer.exe exit code: $($process.ExitCode)"
             if ($process.ExitCode -ne 0 -and $process.ExitCode -ne 3010) {
               throw "vs_installer.exe failed with exit code $($process.ExitCode)."
             }
+            Get-Process -Name "setup", "vs_setup" -ErrorAction SilentlyContinue | Wait-Process
+            $targets = Find-VstoTargets -InstallPath $installPath
           }
-          if (-not (Test-Path $targets -PathType Leaf)) {
+          if (-not $targets) {
+            Write-Host "Recent Visual Studio Installer logs under $env:TEMP:"
+            Get-ChildItem -Path $env:TEMP -Filter "dd_*" -File -ErrorAction SilentlyContinue |
+              Sort-Object -Property LastWriteTime -Descending |
+              Select-Object -First 10 |
+              ForEach-Object { Write-Host $_.FullName }
             throw "VSTO build targets are still unavailable. Use a self-hosted Windows runner with the Office/SharePoint development workload installed."
           }
           Write-Host "VSTO targets found: $targets"
